@@ -1,86 +1,75 @@
 {
-  "name": "Python & Next.js Dev Environment",
+  "name": "GitHub CLI Template - Python & TypeScript Dev Environment",
   "build": {
     "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
+        "github.copilot",
+        "github.copilot-chat",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "charliermarsh.ruff",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "bradlc.vscode-tailwindcss"
+        "github.vscode-pull-request-github",
+        "editorconfig.editorconfig"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        },
+        "python.defaultInterpreterPath": "${workspaceFolder}/src/py/.venv/bin/python",
         "python.analysis.typeCheckingMode": "basic",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[python]": {
-          "editor.defaultFormatter": "charliermarsh.ruff"
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
         },
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit",
-          "source.organizeImports": "explicit"
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+          }
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+          }
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[markdown]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
         }
       }
     }
   },
-
-  // ============================================
-  // Persistent Volumes
-  // Keep history and cache across container rebuilds
-  // ============================================
   "mounts": [
-    // 1. pip/uv wheel cache (for faster installs)
     "source=global-cache,target=/home/vscode/.cache/,type=volume",
-
-    // 2. Claude Code history
-    "source=claude-data,target=/home/vscode/.claude,type=volume",
-
-    // 3. GitHub Copilot CLI history
-    "source=gh-copilot-data,target=/home/vscode/.config/github-copilot,type=volume",
-
-    // 4. npm global packages (for AI CLI tools)
-    "source=npm-global,target=/home/vscode/.npm-global,type=volume"
+    "source=gh-copilot-data,target=/home/vscode/.config/github-copilot,type=volume"
   ],
-
-  // ============================================
-  // API Keys for AI CLIs
-  // Set in Codespaces Secrets or local .env
-  // Uncomment the keys you need
-  // ============================================
   "containerEnv": {
-    // npm global install path
-    "NPM_CONFIG_PREFIX": "/home/vscode/.npm-global",
-    "PATH": "${containerEnv:PATH}:/home/vscode/.npm-global/bin",
-    
-    // "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
-    // "GOOGLE_API_KEY": "${localEnv:GOOGLE_API_KEY}",
-    // "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
   },
-
-  // ============================================
-  // AI CLI Tools Installation
-  // Uncomment the tools you want to install
-  // ============================================
-  "postCreateCommand": {
-    // GitHub Copilot CLI (default: enabled)
-    "copilot": "gh extension install github/gh-copilot || true"
-
-    // Claude Code - Uncomment to enable
-    // ,"claude": "npm install -g @anthropic-ai/claude-code"
-
-    // Gemini CLI - Uncomment to enable
-    // ,"gemini": "npm install -g @google/gemini-cli"
-
-    // OpenAI Codex - Uncomment to enable
-    // ,"codex": "npm install -g @openai/codex"
-  },
-
+  "onCreateCommand": ".devcontainer/onCreateCommand.sh",
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh",
+  "postStartCommand": ".devcontainer/postStartCommand.sh",
   "remoteUser": "vscode"
 }
