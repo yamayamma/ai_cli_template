@@ -11,11 +11,13 @@ This template provides:
 - **GitHub CLI (gh)** integration for GitHub operations
 - **Linting, formatting, and type checking** for both languages
 - **CI/CD workflows** with GitHub Actions
+- **Multi-architecture support** - Works on arm64 (Apple Silicon) and amd64 (x86_64)
 
 ## Toolchain
 
 ### Python
 - **Package Manager**: `uv` (modern Python package manager)
+- **Python Version**: 3.12+ (installed via `uv python install 3.12`)
 - **Linter/Formatter**: `ruff` (fast Python linter and formatter)
 - **Type Checker**: `pyright` (static type checker)
 - **Testing**: `pytest` with coverage
@@ -33,6 +35,7 @@ This template provides:
 - **GitHub CLI**: `gh` for GitHub operations
 - **Shell**: `zsh` (default terminal)
 - **Editor**: VS Code with Dev Containers
+- **Base Image**: Ubuntu 22.04 (multi-arch: arm64 and amd64)
 
 ## Coding Conventions
 

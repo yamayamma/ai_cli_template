@@ -15,6 +15,15 @@ A comprehensive development template for building CLI tools with Python and Type
 - 🤖 **GitHub Copilot** optimized with custom instructions
 - ✅ **CI/CD** with GitHub Actions for both languages
 - 📚 **Comprehensive documentation** and best practices
+- 🍎 **Multi-architecture support** - Works on Apple Silicon (M1/M2/M3) and Intel/AMD (x86_64)
+
+## Architecture Support
+
+This template uses `ubuntu-22.04` base image which supports:
+- **arm64** (Apple Silicon M1/M2/M3, AWS Graviton)
+- **amd64** (Intel/AMD x86_64)
+
+The Dev Container automatically detects your architecture and installs the appropriate binaries.
 
 ## Quick Start
 

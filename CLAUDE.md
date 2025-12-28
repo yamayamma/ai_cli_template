@@ -8,13 +8,16 @@ This is a **GitHub CLI Template** for building CLI tools with Python and TypeScr
 - VS Code Dev Containers
 - GitHub Codespaces
 - Local development with Docker
+- **Multi-architecture support**: arm64 (Apple Silicon M1/M2/M3) and amd64 (Intel/AMD x86_64)
 
 ## Key Tools
 
 - **Python**: uv (package manager), ruff (linter/formatter), pyright (type checker)
+  - Python 3.12+ is installed via `uv python install 3.12`
 - **TypeScript**: pnpm (package manager), eslint (linter), prettier (formatter), tsc (compiler)
 - **GitHub**: gh (GitHub CLI)
 - **Shell**: zsh (default terminal)
+- **Base Image**: Ubuntu 22.04 (multi-arch support)
 
 ## Project Structure
 

@@ -1,10 +1,7 @@
 {
-  "name": "GitHub CLI Template - Python & TypeScript Dev Environment",
+  "name": "GitHub CLI Template - Python & TypeScript Dev Environment (arm64 compatible)",
   "build": {
     "dockerfile": "Dockerfile"
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {

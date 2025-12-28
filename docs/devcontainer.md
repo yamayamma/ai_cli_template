@@ -67,7 +67,8 @@ Runs once when the container is first created:
 
 ### After Creation (postCreateCommand)
 Runs after the container is created:
-- Installs Python dependencies with `uv sync`
+- Installs Python 3.12 with `uv python install 3.12`
+- Creates virtual environment and installs Python dependencies with `uv sync`
 - Installs TypeScript dependencies with `pnpm install`
 - Shows installed tool versions
 
@@ -96,9 +97,17 @@ gh auth status
 
 ## Container Features
 
+### Architecture Support
+
+This Dev Container supports multiple architectures:
+- **arm64** (Apple Silicon M1/M2/M3, AWS Graviton)
+- **amd64** (Intel/AMD x86_64)
+
+The container automatically detects your host architecture and installs the appropriate binaries. Ubuntu 22.04 base image is used for multi-arch compatibility.
+
 ### Installed Tools
 
-- **Python 3.12+** with `uv` package manager
+- **Python 3.12+** with `uv` package manager (installed via `uv python install 3.12`)
 - **Node.js 20+** (LTS) with `pnpm`
 - **GitHub CLI** (`gh`)
 - **Git** for version control

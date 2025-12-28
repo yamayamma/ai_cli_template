@@ -5,24 +5,35 @@ This directory contains the Dev Container configuration for the GitHub CLI Templ
 ## Overview
 
 This Dev Container provides a complete development environment for building CLI tools with:
-- **Python 3.12+** with `uv` package manager
+- **Python 3.12+** with `uv` package manager (installed via uv python install)
 - **Node.js 20+ (LTS)** with `pnpm` via corepack
 - **GitHub CLI (gh)** for GitHub operations
 - **VS Code extensions** for Python, TypeScript, and GitHub Copilot
+- **Multi-architecture support** - Works on both amd64 (x86_64) and arm64 (Apple Silicon M1/M2/M3)
+
+## Architecture Support
+
+This Dev Container is based on `mcr.microsoft.com/devcontainers/base:ubuntu-22.04`, which supports multiple architectures:
+- **amd64** (x86_64) - Intel/AMD processors
+- **arm64** (aarch64) - Apple Silicon (M1/M2/M3), AWS Graviton, etc.
+
+The container will automatically detect the host architecture and install the appropriate binaries.
 
 ## Structure
 
 ```
 .devcontainer/
-├── Dockerfile              # Container image definition
+├── Dockerfile              # Container image definition (Ubuntu 22.04 base)
 ├── devcontainer.json       # VS Code Dev Container configuration
 ├── onCreateCommand.sh      # Runs once on container creation
-├── postCreateCommand.sh    # Runs after container creation
+├── postCreateCommand.sh    # Runs after container creation (installs Python 3.12)
 ├── postStartCommand.sh     # Runs on every container start
 ├── library-scripts/        # Helper scripts for container setup
-│   ├── install-uv.sh
-│   ├── install-gh-extensions.sh
-│   └── cleanup-unneeded.sh
+│   ├── install-uv.sh       # Install uv package manager
+│   ├── install-gh.sh       # Install GitHub CLI
+│   ├── install-node.sh     # Install Node.js 20 LTS
+│   ├── install-gh-extensions.sh  # Install gh extensions
+│   └── cleanup-unneeded.sh # Clean up build artifacts
 └── README.md              # This file
 ```
 
