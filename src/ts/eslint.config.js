@@ -13,6 +13,7 @@ export default tseslint.config(
       ecmaVersion: 2022,
       sourceType: "module",
       parserOptions: {
+        // Path is relative to this config file location (src/ts/)
         project: ["./tsconfig.json"],
       },
     },
