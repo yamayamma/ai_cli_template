@@ -62,9 +62,6 @@
     "source=global-cache,target=/home/vscode/.cache/,type=volume",
     "source=gh-copilot-data,target=/home/vscode/.config/github-copilot,type=volume"
   ],
-  "containerEnv": {
-    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
-  },
   "onCreateCommand": ".devcontainer/onCreateCommand.sh",
   "postCreateCommand": ".devcontainer/postCreateCommand.sh",
   "postStartCommand": ".devcontainer/postStartCommand.sh",
