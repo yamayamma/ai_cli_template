@@ -92,6 +92,7 @@ src/ts/
 ## Dependencies
 
 ### Development
+
 - **typescript**: TypeScript compiler
 - **@types/node**: Node.js type definitions
 - **eslint**: JavaScript/TypeScript linter
