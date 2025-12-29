@@ -40,6 +40,6 @@ RUN echo "=== Verifying installations ===" \
     && node --version \
     && pnpm --version \
     && gh --version \
-    && uv --version \
+    && /usr/local/bin/uv --version \
     && git --version \
     && zsh --version

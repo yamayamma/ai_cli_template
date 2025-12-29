@@ -6,10 +6,19 @@ set -euo pipefail
 
 echo "Installing uv..."
 
+# Install for root user (during Docker build)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Make uv available for the current user
-export PATH="/root/.local/bin:/home/vscode/.local/bin:$PATH"
+# Also install for vscode user
+if [ -d /home/vscode ]; then
+    echo "Installing uv for vscode user..."
+    su - vscode -c 'curl -LsSf https://astral.sh/uv/install.sh | sh'
+fi
+
+# Make uv available globally
+if [ -f /root/.local/bin/uv ]; then
+    ln -sf /root/.local/bin/uv /usr/local/bin/uv || true
+fi
 
 echo "uv installed successfully"
-uv --version
+/usr/local/bin/uv --version || /root/.local/bin/uv --version

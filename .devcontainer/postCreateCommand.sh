@@ -5,6 +5,22 @@ set -euo pipefail
 
 echo "Running postCreateCommand..."
 
+# Ensure PATH includes uv location
+export PATH="/usr/local/bin:/home/vscode/.local/bin:/root/.local/bin:$PATH"
+
+# Verify uv is available
+if ! command -v uv &> /dev/null; then
+    echo "ERROR: uv command not found in PATH"
+    echo "PATH: $PATH"
+    echo "Checking common locations..."
+    ls -la /usr/local/bin/uv 2>/dev/null || echo "/usr/local/bin/uv not found"
+    ls -la /home/vscode/.local/bin/uv 2>/dev/null || echo "/home/vscode/.local/bin/uv not found"
+    ls -la /root/.local/bin/uv 2>/dev/null || echo "/root/.local/bin/uv not found"
+    exit 1
+fi
+
+echo "uv found at: $(which uv)"
+
 # Install Python dependencies with uv
 if [ -d "src/py" ]; then
     echo "Installing Python 3.12 and dependencies with uv..."
