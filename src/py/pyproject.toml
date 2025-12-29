@@ -1,0 +1,23 @@
+[project]
+name = "ghcli-tools"
+version = "0.1.0"
+description = "GitHub CLI Tools - A collection of gh utilities"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1.0",
+]
+
+[project.scripts]
+ghcli-tools = "ghcli_tools.cli:cli"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.8.0",
+    "pyright>=1.1.390",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

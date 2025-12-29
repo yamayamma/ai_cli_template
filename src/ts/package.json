@@ -1,0 +1,35 @@
+{
+  "name": "ghcli-ts",
+  "version": "0.1.0",
+  "description": "GitHub CLI Tools - TypeScript edition",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "cli": "node dist/index.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
+  },
+  "bin": {
+    "ghcli-ts": "./dist/index.js"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "gh",
+    "tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}
