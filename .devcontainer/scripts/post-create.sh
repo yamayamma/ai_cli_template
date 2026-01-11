@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Setting up Copilot CLI development environment..."
+echo "🚀 Setting up TypeScript Web App development environment..."
 
 # GitHub CLIの確認
 if command -v gh &> /dev/null; then
@@ -14,22 +14,32 @@ else
     sudo apt install gh -y
 fi
 
-# uvのインストール
-if command -v uv &> /dev/null; then
-    echo "✅ uv is already installed: $(uv --version)"
+# Node.jsの確認
+if command -v node &> /dev/null; then
+    echo "✅ Node.js is installed: $(node --version)"
 else
-    echo "📦 Installing uv..."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    export PATH="$HOME/.cargo/bin:$PATH"
+    echo "❌ Node.js not found!"
+    exit 1
 fi
 
-# Python 3.12のインストール
-echo "🐍 Installing Python 3.12 with uv..."
-uv python install 3.12
+# pnpmのインストール
+if command -v pnpm &> /dev/null; then
+    echo "✅ pnpm is already installed: $(pnpm --version)"
+else
+    echo "📦 Installing pnpm..."
+    corepack enable
+    corepack prepare pnpm@latest --activate
+fi
+
+# 依存関係のインストール
+if [ -f "package.json" ]; then
+    echo "📦 Installing dependencies with pnpm..."
+    pnpm install
+fi
 
 # GitHub Copilot CLIのインストール
 echo "📦 Installing GitHub Copilot CLI..."
-curl -fsSL https://gh.io/copilot-install | bash
+curl -fsSL https://gh.io/copilot-install | bash 2>/dev/null || true
 
 # Gitの初期設定（未設定の場合）
 if [ -z "$(git config --global user.name)" ]; then
@@ -45,9 +55,13 @@ echo "=========================================="
 echo "📋 Post-create setup complete!"
 echo "=========================================="
 echo ""
-echo "Next steps:"
-echo "1. Authenticate with GitHub: gh auth login"
-echo "2. Verify Copilot CLI: copilot --version"
+echo "Available commands:"
+echo "  pnpm dev       - Start development server"
+echo "  pnpm test      - Run tests with Vitest"
+echo "  pnpm lint      - Lint with Biome"
+echo "  pnpm format    - Format with Biome"
+echo "  pnpm check     - Lint + Format with Biome"
+echo ""
 echo "3. Start using Copilot CLI:"
 echo "   - copilot suggest 'your command description'"
 echo "   - copilot explain 'command to explain'"
