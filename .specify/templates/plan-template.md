@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Test-First Development**: Test specifications created and user-approved before implementation
+- [ ] **TypeScript Strict Mode**: All code uses strict typing, no unexplained `any` types
+- [ ] **ESM-First**: All imports use ESM syntax with explicit extensions
+- [ ] **Quality Gates**: 80%+ test coverage, build/test/lint performance within limits
+- [ ] **Documentation Through Tests**: Tests serve as specifications, working docs archived on merge
 
 ## Project Structure
 
