@@ -1,0 +1,365 @@
+# Release Workflow Contract
+
+**Purpose**: Define the exact structure and behavior of the semantic-release workflow  
+**File Location**: `.github/workflows/release.yml`  
+**Triggers**: Push to `main` branch (after CI passes)
+
+## Workflow Structure
+
+```yaml
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write  # Create tags and releases
+  issues: write    # Comment on issues
+  pull-requests: write  # Comment on PRs
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    # Only run if CI passes (implied by branch protection)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for semantic-release
+          persist-credentials: false  # Use PAT instead
+          
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Verify build
+        run: pnpm build
+        
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: semantic-release-bot
+          GIT_AUTHOR_EMAIL: semantic-release-bot@martynus.net
+          GIT_COMMITTER_NAME: semantic-release-bot
+          GIT_COMMITTER_EMAIL: semantic-release-bot@martynus.net
+        run: npx semantic-release
+```
+
+## Job Specification
+
+### Job: `release`
+**Purpose**: Analyze commits, determine version bump, create release  
+**Runner**: ubuntu-latest  
+**Node Version**: 22  
+**Timeout**: Default (typically completes in < 2 minutes)
+
+**Steps**:
+1. **Checkout code**
+   - Full history (`fetch-depth: 0`) required for commit analysis
+   - Use default credentials (GITHUB_TOKEN has sufficient permissions)
+
+2. **Setup pnpm** (version 9)
+
+3. **Setup Node.js** with pnpm cache
+
+4. **Install dependencies** (frozen lockfile)
+
+5. **Verify build**
+   - Ensures project builds before creating release
+   - Prevents releasing broken code
+
+6. **Run semantic-release**
+   - Analyzes commits since last release
+   - Determines version bump (major/minor/patch)
+   - Updates package.json and CHANGELOG.md
+   - Commits changes back to repo
+   - Creates git tag
+   - Creates GitHub Release
+
+**Exit Conditions**:
+- ✅ Success: New release created (or "no release" if no relevant commits)
+- ❌ Failure: Build fails, commit analysis fails, or GitHub API error
+
+---
+
+## Semantic-Release Configuration
+
+**File**: `.releaserc.json` (repository root)
+
+```json
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    ["@semantic-release/npm", {
+      "npmPublish": false
+    }],
+    "@semantic-release/github",
+    ["@semantic-release/git", {
+      "assets": ["package.json", "CHANGELOG.md"],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }]
+  ]
+}
+```
+
+### Plugin Responsibilities
+
+1. **@semantic-release/commit-analyzer**
+   - Reads commits since last release
+   - Determines release type: major, minor, patch, or none
+   - Based on: Conventional Commits (feat, fix, BREAKING CHANGE)
+
+2. **@semantic-release/release-notes-generator**
+   - Generates release notes from commits
+   - Groups by type (Features, Bug Fixes, etc.)
+   - Includes commit links
+
+3. **@semantic-release/changelog**
+   - Updates `CHANGELOG.md` with new release
+   - Appends to top of file
+   - Preserves existing entries
+
+4. **@semantic-release/npm**
+   - Updates `version` in package.json
+   - Skips npm registry publish (`npmPublish: false`)
+
+5. **@semantic-release/github**
+   - Creates GitHub Release
+   - Attaches release notes
+   - Links to commits and PRs
+
+6. **@semantic-release/git**
+   - Commits `package.json` and `CHANGELOG.md` changes
+   - Tags commit with version
+   - Pushes to origin/main
+   - Commit message includes `[skip ci]` to avoid triggering CI
+
+---
+
+## Conventional Commits
+
+### Release Types
+
+| Commit Message Prefix | Release Type | Example Version Bump |
+|-----------------------|--------------|----------------------|
+| `fix:` | Patch | 1.0.0 → 1.0.1 |
+| `feat:` | Minor | 1.0.1 → 1.1.0 |
+| `feat!:` or `BREAKING CHANGE:` | Major | 1.1.0 → 2.0.0 |
+| `chore:`, `docs:`, `style:`, etc. | None | No release |
+
+### Valid Prefixes
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation only
+- `style`: Code style (formatting, no logic change)
+- `refactor`: Code refactoring
+- `perf`: Performance improvement
+- `test`: Adding tests
+- `chore`: Maintenance (deps, config, etc.)
+
+### Examples
+
+**Patch Release**:
+```
+fix: resolve null pointer exception in greet function
+```
+
+**Minor Release**:
+```
+feat: add support for custom greeting messages
+```
+
+**Major Release** (Option 1):
+```
+feat!: change greet function signature
+
+BREAKING CHANGE: greet() now requires name parameter
+```
+
+**Major Release** (Option 2):
+```
+feat: redesign API
+
+BREAKING CHANGE: All functions now return Promises
+```
+
+**No Release**:
+```
+chore: update devcontainer configuration
+docs: fix typo in README
+```
+
+---
+
+## Permissions
+
+**Required Permissions**:
+- `contents: write` - Create tags, push commits, create releases
+- `issues: write` - Comment on resolved issues
+- `pull-requests: write` - Comment on merged PRs
+
+**Token**: `GITHUB_TOKEN` (automatically provided by GitHub Actions)
+- Sufficient for all operations
+- No PAT (Personal Access Token) required
+
+---
+
+## Release Process Flow
+
+```mermaid
+graph TD
+    A[Push to main] --> B{CI Passed?}
+    B -->|No| C[Stop - No Release]
+    B -->|Yes| D[Checkout full history]
+    D --> E[Analyze commits]
+    E --> F{Relevant changes?}
+    F -->|No| G[Log: No release needed]
+    F -->|Yes| H[Determine version bump]
+    H --> I[Update package.json]
+    I --> J[Update CHANGELOG.md]
+    J --> K[Commit changes]
+    K --> L[Create git tag]
+    L --> M[Push to main]
+    M --> N[Create GitHub Release]
+    N --> O[✅ Release Complete]
+```
+
+---
+
+## Outputs
+
+### Git Commit
+- **Author**: semantic-release-bot
+- **Message**: `chore(release): X.Y.Z [skip ci]`
+- **Files**: `package.json`, `CHANGELOG.md`
+
+### Git Tag
+- **Format**: `vX.Y.Z` (e.g., `v1.2.3`)
+- **Annotation**: Release notes
+
+### GitHub Release
+- **Title**: `vX.Y.Z`
+- **Body**: Generated release notes
+- **Assets**: None (template project)
+
+---
+
+## Dependencies Required
+
+```json
+{
+  "devDependencies": {
+    "semantic-release": "^24.2.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1"
+  }
+}
+```
+
+**Note**: Other plugins (`commit-analyzer`, `release-notes-generator`, `npm`, `github`) are bundled with `semantic-release`.
+
+---
+
+## Edge Cases Handled
+
+### 1. No Relevant Commits
+- **Scenario**: Only `chore:` or `docs:` commits since last release
+- **Behavior**: semantic-release logs "no release" and exits successfully
+- **Result**: No new version, no GitHub Release
+
+### 2. Multiple Commits
+- **Scenario**: Several commits pushed together
+- **Behavior**: semantic-release aggregates all commits
+- **Result**: Single release with all changes
+
+### 3. BREAKING CHANGE in Body
+- **Scenario**: Breaking change in commit body, not footer
+```
+feat: improve API
+
+BREAKING CHANGE: removed deprecated method
+```
+- **Behavior**: Correctly identified as major release
+
+### 4. First Release
+- **Scenario**: No previous tags exist
+- **Behavior**: Creates v1.0.0 (if feat commits exist)
+
+### 5. Release Commit Triggers CI
+- **Scenario**: Commit from semantic-release-bot
+- **Behavior**: `[skip ci]` in message prevents CI run
+- **Rationale**: Already verified by previous CI run
+
+---
+
+## Validation Checklist
+
+Before merging this contract:
+- [ ] `.releaserc.json` exists in repository root
+- [ ] Dependencies installed (`semantic-release`, `@semantic-release/changelog`, `@semantic-release/git`)
+- [ ] Branch protection on `main` requires CI to pass
+- [ ] Workflow has `contents: write` permission
+- [ ] Commit message includes `[skip ci]`
+- [ ] npm publish disabled (`npmPublish: false`)
+
+---
+
+## Testing Strategy
+
+### Dry Run (Local)
+```bash
+# Test semantic-release without actually releasing
+npx semantic-release --dry-run --no-ci
+```
+
+### Test Commit Analysis
+```bash
+# Verify commit triggers release
+git commit -m "feat: test feature"
+npx semantic-release --dry-run --no-ci
+# Expected: "The next release version is 1.1.0"
+```
+
+---
+
+## Performance Targets
+
+| Step | Target Time | Typical Time |
+|------|-------------|--------------|
+| Checkout (full history) | < 10s | ~5s |
+| Install dependencies | < 30s | ~15s (cache hit) |
+| Build verification | < 30s | ~20s |
+| semantic-release | < 60s | ~30s |
+
+**Total**: < 2 minutes
+
+---
+
+## Future Enhancements (Not in MVP)
+
+- Pre-release branches (beta, alpha)
+- Slack/Discord notifications on release
+- Changelog customization (grouping, filtering)
+- Release assets (build artifacts - NOT needed for template)
+
+---
+
+**Contract Version**: 1.0  
+**Last Updated**: 2026-01-12  
+**Status**: ✅ Ready for Implementation

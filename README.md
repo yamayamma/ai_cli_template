@@ -1,383 +1,317 @@
-# GitHub CLI Template
+# TypeScript Web App Development Template
 
-A comprehensive development template for building CLI tools with Python and TypeScript, powered by GitHub CLI and optimized for Dev Containers.
+![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?logo=vitest)
+![Release](https://img.shields.io/github/v/release/yamayamma/ai_cli_template?logo=github)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-22.x-brightgreen?logo=node.js)
+![pnpm](https://img.shields.io/badge/pnpm-9.x-orange?logo=pnpm)
 
-[![CI - Python](https://github.com/yamayamma/ai_cli_template/workflows/CI%20-%20Python/badge.svg)](https://github.com/yamayamma/ai_cli_template/actions)
-[![CI - TypeScript](https://github.com/yamayamma/ai_cli_template/workflows/CI%20-%20TypeScript/badge.svg)](https://github.com/yamayamma/ai_cli_template/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+TypeScript + GitHub Copilot を使用したWebアプリケーション開発のためのdevcontainerテンプレートです。
 
-## Features
+## 📋 Constitution（プロジェクト原則）
 
-- 🐍 **Python CLI** with `uv` package manager, `ruff` linter/formatter, and `pyright` type checker
-- 📘 **TypeScript CLI** with `pnpm`, `eslint`, `prettier`, and full type safety
-- 🚀 **Dev Container** ready for VS Code and GitHub Codespaces
-- 🔧 **GitHub CLI** (`gh`) integration for GitHub operations
-- 🤖 **GitHub Copilot** optimized with custom instructions
-- ✅ **CI/CD** with GitHub Actions for both languages
-- 📚 **Comprehensive documentation** and best practices
-- 🍎 **Multi-architecture support** - Works on Apple Silicon (M1/M2/M3) and Intel/AMD (x86_64)
+本プロジェクトは [Constitution](.specify/memory/constitution.md) に従って開発されます。
 
-## Architecture Support
+**主要原則**:
+1. **Test-First Development (TDD)** - テスト駆動開発必須
+2. **TypeScript Strict Mode** - 厳格な型チェック
+3. **ESM-First** - ES Modules標準
+4. **Quality Gates** - 80%以上のテストカバレッジ
+5. **Documentation Through Tests** - テストが仕様書
 
-This template uses `ubuntu-22.04` base image which supports:
-- **arm64** (Apple Silicon M1/M2/M3, AWS Graviton)
-- **amd64** (Intel/AMD x86_64)
+## 🚀 クイックスタート
 
-The Dev Container automatically detects your architecture and installs the appropriate binaries.
+### 1. devcontainerで開く
 
-## Quick Start
-
-### Option 1: GitHub Codespaces (Easiest)
-
-1. Click the **Code** button on GitHub
-2. Select **Codespaces** tab
-3. Click **Create codespace on main**
-4. Wait for the environment to set up (2-3 minutes)
-
-### Option 2: Local with VS Code
-
-#### Prerequisites
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-
-#### Steps
 ```bash
-# Clone the repository
-git clone https://github.com/yamayamma/ai_cli_template.git
-cd ai_cli_template
-
-# Open in VS Code
+# VS Code でこのリポジトリを開く
 code .
 
-# Reopen in container
-# Press F1, type "Dev Containers: Reopen in Container"
+# コマンドパレット (F1) → "Dev Containers: Reopen in Container"
 ```
 
-### Option 3: Local without Dev Container
+初回起動時に自動で以下がインストールされます：
+- Node.js 22 LTS
+- pnpm 9
+- 全依存関係
 
-#### Prerequisites
-- Python 3.12+
-- Node.js 20+ (LTS)
-- Git
-- GitHub CLI (`gh`)
-
-#### Setup
-```bash
-# Clone the repository
-git clone https://github.com/yamayamma/ai_cli_template.git
-cd ai_cli_template
-
-# Install uv (Python package manager)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install pnpm (via corepack)
-corepack enable
-corepack prepare pnpm@latest --activate
-
-# Run bootstrap script
-./scripts/bootstrap.sh
-```
-
-## Authentication
-
-Authenticate with GitHub CLI for full functionality:
+### 2. 開発コマンド
 
 ```bash
-gh auth login
+# 開発サーバー起動
+pnpm dev
+
+# テスト実行
+pnpm test              # Watch mode
+pnpm test:run          # 1回実行
+pnpm test:coverage     # カバレッジレポート付き
+
+# コード品質
+pnpm lint              # リントチェック
+pnpm format            # フォーマット実行
+pnpm check             # リント + フォーマット（自動修正）
+
+# ビルド
+pnpm build             # プロダクションビルド
+pnpm preview           # ビルド結果のプレビュー
+
+# ドキュメント
+pnpm docs:generate     # API ドキュメント生成
 ```
 
-Follow the prompts to authenticate via web browser or token.
+## 🔄 CI/CD & Automation
 
-Verify authentication:
-```bash
-gh auth status
-```
+This project uses automated workflows for quality assurance and releases:
 
-## Project Structure
+### Continuous Integration (CI)
 
-```
-├── .devcontainer/       # Dev Container configuration
-│   ├── Dockerfile
-│   ├── devcontainer.json
-│   ├── library-scripts/
-│   └── *.sh             # Lifecycle scripts
-├── .github/             # GitHub Actions and Copilot instructions
-│   ├── workflows/       # CI/CD workflows
-│   ├── instructions/    # Language-specific guidelines
-│   └── copilot-instructions.md
-├── docs/                # Documentation
-│   ├── devcontainer.md  # Dev Container guide
-│   ├── toolchain.md     # Tool usage
-│   ├── gh-cli-usage.md  # GitHub CLI examples
-│   └── conventions.md   # Best practices
-├── scripts/             # Helper scripts
-│   ├── bootstrap.sh
-│   ├── format.sh
-│   ├── lint.sh
-│   └── test.sh
-├── src/
-│   ├── py/             # Python CLI tools
-│   │   ├── pyproject.toml
-│   │   ├── ghcli_tools/
-│   │   └── README.md
-│   └── ts/             # TypeScript CLI tools
-│       ├── package.json
-│       ├── src/
-│       └── README.md
-├── CLAUDE.md           # Claude Code instructions
-├── LICENSE             # MIT License
-└── README.md           # This file
-```
+Every pull request and push to `main` triggers:
 
-## Python CLI
+- ✅ **Test Job** - Runs all unit tests with coverage reporting
+- ✅ **Lint Job** - Checks code quality with Biome
+- ✅ **Build Job** - Verifies TypeScript compilation
 
-### Usage
+Status: ![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
 
-```bash
-cd src/py
+### Automated Releases
 
-# Install dependencies
-uv sync
+Commits to `main` with [conventional commit](https://www.conventionalcommits.org/) messages automatically:
 
-# Run the CLI
-uv run ghcli-tools --help
-uv run ghcli-tools hello --name "Developer"
-uv run ghcli-tools version
+1. **Analyze commits** - Determines version bump (major/minor/patch)
+2. **Update version** - Updates `package.json` and `CHANGELOG.md`
+3. **Create release** - Publishes GitHub Release with release notes
+4. **Update badges** - Reflects latest version in README
 
-# Development
-uv run ruff format .     # Format
-uv run ruff check .      # Lint
-uv run pyright           # Type check
-uv run pytest            # Test
-```
+**Commit examples**:
+- `feat: add new feature` → Minor version bump (1.0.0 → 1.1.0)
+- `fix: resolve bug` → Patch version bump (1.1.0 → 1.1.1)
+- `feat!: breaking change` → Major version bump (1.1.1 → 2.0.0)
 
-### Adding Dependencies
+## 📚 Documentation
+
+### API Documentation
+
+Generate HTML documentation from TypeScript code:
 
 ```bash
-cd src/py
-uv add requests          # Add runtime dependency
-uv add --dev pytest-mock # Add dev dependency
+pnpm docs:generate
 ```
 
-## TypeScript CLI
+Output: [docs/api/index.html](docs/api/index.html)
 
-### Usage
+### Project Documentation
 
-```bash
-cd src/ts
+- **[Constitution](.specify/memory/constitution.md)** - Project principles and standards
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+- **[docs/archive/](docs/archive/)** - Archived design documents
 
-# Install dependencies
-pnpm install
+## 📦 技術スタック
 
-# Build
-pnpm run build
+| カテゴリ | ツール | バージョン | 理由 |
+|---------|--------|-----------|------|
+| 言語 | TypeScript | 5.x | 厳格な型付け、モダン機能 |
+| ランタイム | Node.js | 22.x LTS | 最新安定版、ESMサポート |
+| パッケージマネージャ | pnpm | 9.x | 高速、ディスク効率的 |
+| バンドラー | Vite | 6.x | 高速HMR、ESMネイティブ |
+| テスト | Vitest | 2.x | Viteネイティブ、高速 |
+| リンター/フォーマッター | Biome | 1.9.x | 単一ツール、Rust製で高速 |
 
-# Run the CLI
-pnpm run cli
-pnpm run cli hello Developer
-pnpm run cli version
+## 🏗️ プロジェクト構造
 
-# Development
-pnpm run format          # Format
-pnpm run lint            # Lint
-pnpm run typecheck       # Type check
-pnpm run dev             # Watch mode
+```
+ai_cli_template/
+├── .devcontainer/          # Dev Container設定
+│   ├── devcontainer.json   # コンテナ設定
+│   └── scripts/            # セットアップスクリプト
+├── .github/                # GitHub設定
+├── .specify/               # Speckit（開発プロセス管理）
+│   ├── memory/
+│   │   └── constitution.md # プロジェクト原則
+│   └── templates/          # 仕様・計画テンプレート
+├── .vscode/                # VS Code設定
+├── src/                    # ソースコード
+│   └── index.ts
+├── tests/                  # テストコード
+│   └── index.test.ts
+├── docs/                   # ドキュメント
+│   └── archive/            # アーカイブされた作業文書
+├── package.json            # 依存関係
+├── tsconfig.json           # TypeScript設定
+├── biome.json              # Biome設定
+├── vite.config.ts          # Vite設定
+└── vitest.config.ts        # Vitest設定
 ```
 
-### Adding Dependencies
+## 🔄 開発ワークフロー（TDD）
 
-```bash
-cd src/ts
-pnpm add axios           # Add runtime dependency
-pnpm add -D @types/node  # Add dev dependency
-```
-
-## Development Workflow
-
-### Quick Commands
-
-```bash
-# Format all code
-./scripts/format.sh
-
-# Lint all code
-./scripts/lint.sh
-
-# Run all tests
-./scripts/test.sh
-
-# Check GitHub auth
-./scripts/gh-auth-check.sh
-```
-
-### Pre-commit Checklist
-
-- [ ] Format code: `./scripts/format.sh`
-- [ ] Lint code: `./scripts/lint.sh`
-- [ ] Run tests: `./scripts/test.sh`
-- [ ] Update documentation if needed
-- [ ] Write descriptive commit message
-
-## GitHub CLI Integration
-
-This template is designed for GitHub CLI integration. Examples:
-
-### Python
-```python
-import subprocess
-import json
-
-def run_gh(args: list[str]) -> dict:
-    result = subprocess.run(
-        ["gh"] + args,
-        capture_output=True,
-        text=True,
-        check=True
-    )
-    return json.loads(result.stdout)
-
-# Get repository info
-repo = run_gh(["repo", "view", "--json", "name,owner"])
-print(f"Repository: {repo['name']}")
-```
-
-### TypeScript
+### 1. テスト作成
 ```typescript
-import { exec } from "child_process";
-import { promisify } from "util";
+// tests/feature.test.ts
+import { describe, expect, it } from 'vitest';
+import { myFunction } from '../src/feature';
 
-const execAsync = promisify(exec);
-
-async function runGh(args: string[]): Promise<any> {
-  const { stdout } = await execAsync(`gh ${args.join(" ")}`);
-  return JSON.parse(stdout);
-}
-
-// Get repository info
-const repo = await runGh(["repo", "view", "--json", "name,owner"]);
-console.log(`Repository: ${repo.name}`);
+describe('myFunction', () => {
+  it('should do something specific', () => {
+    expect(myFunction('input')).toBe('expected output');
+  });
+});
 ```
 
-See [docs/gh-cli-usage.md](docs/gh-cli-usage.md) for more examples.
+### 2. ユーザーレビュー
+テストをコミットし、ユーザーに仕様として承認してもらう。
 
-## Toolchain
-
-### Python
-- **uv** - Fast Python package manager
-- **ruff** - Fast linter and formatter
-- **pyright** - Static type checker
-- **pytest** - Testing framework
-- **click** - CLI framework
-
-### TypeScript
-- **pnpm** - Fast, disk space efficient package manager
-- **typescript** - TypeScript compiler
-- **eslint** - Linter with TypeScript support
-- **prettier** - Code formatter
-- **Node.js 20+** - JavaScript runtime
-
-### Other
-- **gh** - GitHub CLI for GitHub operations
-- **git** - Version control
-- **zsh** - Default shell
-- **jq** - JSON processor
-
-See [docs/toolchain.md](docs/toolchain.md) for detailed usage.
-
-## Documentation
-
-- [Dev Container Guide](docs/devcontainer.md) - Setup and troubleshooting
-- [Toolchain Guide](docs/toolchain.md) - Tool usage and configuration
-- [GitHub CLI Usage](docs/gh-cli-usage.md) - Examples and best practices
-- [Conventions](docs/conventions.md) - Coding standards and workflow
-
-## CI/CD
-
-Three GitHub Actions workflows:
-
-1. **CI - Python** ([.github/workflows/ci-python.yml](.github/workflows/ci-python.yml))
-   - Tests on Python 3.12 and 3.13
-   - Runs linter, formatter, type checker, and tests
-
-2. **CI - TypeScript** ([.github/workflows/ci-typescript.yml](.github/workflows/ci-typescript.yml))
-   - Runs linter, formatter, type checker, and build
-
-3. **Lint** ([.github/workflows/lint.yml](.github/workflows/lint.yml))
-   - Global formatting checks
-   - ShellCheck for shell scripts
-   - EditorConfig validation
-
-## GitHub Copilot
-
-This template includes GitHub Copilot instructions:
-- [.github/copilot-instructions.md](.github/copilot-instructions.md) - General guidelines
-- [.github/instructions/python.instructions.md](.github/instructions/python.instructions.md) - Python conventions
-- [.github/instructions/typescript.instructions.md](.github/instructions/typescript.instructions.md) - TypeScript conventions
-
-## Contributing
-
-1. Create a feature branch: `git checkout -b feat/my-feature`
-2. Make your changes
-3. Run checks: `./scripts/format.sh && ./scripts/lint.sh && ./scripts/test.sh`
-4. Commit: `git commit -m "feat: add my feature"`
-5. Push: `git push origin feat/my-feature`
-6. Open a Pull Request
-
-See [docs/conventions.md](docs/conventions.md) for detailed guidelines.
-
-## Troubleshooting
-
-### Dev Container Issues
-
-**Problem**: Container fails to build
+### 3. Red → Green → Refactor
 ```bash
-# Rebuild without cache
-F1 → "Dev Containers: Rebuild Container Without Cache"
+# テストが失敗することを確認（Red）
+pnpm test:run
+
+# 実装（Green）
+# src/feature.ts を実装
+
+# テストが通ることを確認
+pnpm test:run
+
+# リファクタリング
+pnpm check  # コード整形
 ```
 
-**Problem**: Dependencies fail to install
+### 4. カバレッジ確認
 ```bash
-# Python
-cd src/py && uv sync
-
-# TypeScript
-cd src/ts && pnpm install
+pnpm test:coverage
+# 80%以上であることを確認
 ```
 
-### Authentication Issues
+## 📚 Speckitワークフロー
 
-**Problem**: GitHub CLI not authenticated
+このプロジェクトは [Speckit](https://github.com/your-org/speckit) を使用した仕様駆動開発をサポートします。
+
 ```bash
+/speckit.constitution  # プロジェクト原則の確立（完了✅）
+/speckit.specify       # 機能仕様の作成
+/speckit.plan          # 実装計画の作成
+/speckit.tasks         # タスクリストの生成
+/speckit.implement     # 実装の実行
+```
+
+詳細は [.specify/memory/constitution.md](.specify/memory/constitution.md) を参照してください。
+
+## 🤖 GitHub Copilot CLI
+
+コンテナ内で以下のコマンドが使用できます：
+
+```bash
+# GitHub認証（初回のみ）
 gh auth login
-gh auth status
+
+# コマンドの提案
+gh copilot suggest "find all TypeScript files with TODO"
+
+# コマンドの説明
+gh copilot explain "pnpm test:coverage"
 ```
 
-See [docs/devcontainer.md](docs/devcontainer.md) for more troubleshooting.
+## 📖 Constitution（プロジェクト憲法）
 
-## License
+このプロジェクトは [.specify/memory/constitution.md](.specify/memory/constitution.md) に定義された原則に従います。
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Version**: 1.0.0 | **Ratified**: 2026-01-11
 
-## Resources
+主要な決定事項：
+- TDD必須（テスト → ユーザー承認 → 実装）
+- TypeScript Strict Mode必須
+- ESMのみ使用
+- 80%以上のカバレッジ必須
+- テストが生きたドキュメント
 
-- [uv documentation](https://docs.astral.sh/uv/)
-- [pnpm documentation](https://pnpm.io/)
-- [GitHub CLI documentation](https://cli.github.com/)
-- [Dev Containers documentation](https://containers.dev/)
-- [Ruff documentation](https://docs.astral.sh/ruff/)
-- [TypeScript documentation](https://www.typescriptlang.org/)
+## 🔧 Troubleshooting
 
-## Acknowledgments
+### pnpm: command not found
 
-This template is designed for:
-- VS Code Dev Containers
-- GitHub Codespaces
-- Local development with Docker
-- CI/CD with GitHub Actions
+**Solution**: Enable corepack to use pnpm
 
-Optimized for building CLI tools that integrate with GitHub via the `gh` CLI.
+```bash
+corepack enable
+```
 
----
+If that doesn't work, restart the devcontainer:
+- Press `F1` → "Dev Containers: Rebuild Container"
 
-**Note**: This is a template repository. Use the "Use this template" button on GitHub to create your own repository based on this template.
+### Node.js version mismatch
+
+**Solution**: Verify you're using Node.js 22.x
+
+```bash
+node --version  # Should show v22.x.x
+```
+
+**Fixes**:
+- Use the devcontainer (recommended) - Node version is managed automatically
+- Use nvm: `nvm install 22 && nvm use 22`
+- Check your PATH if multiple Node versions are installed
+
+### Devcontainer build failures
+
+**Common causes and solutions**:
+
+1. **Docker not running**
+   ```bash
+   # Verify Docker is running
+   docker ps
+   ```
+   If it fails, start Docker Desktop
+
+2. **Insufficient memory**
+   - Open Docker Desktop → Settings → Resources
+   - Increase memory allocation to at least 4GB
+   - Click "Apply & Restart"
+
+3. **Corrupted image cache**
+   ```bash
+   # Clean up Docker system
+   docker system prune -a
+   ```
+   Then rebuild: `F1` → "Dev Containers: Rebuild Container"
+
+### Tests fail locally but pass in CI
+
+**Common causes**:
+
+1. **Environment differences**
+   ```bash
+   # Check versions match CI
+   node --version    # Should be v22.x.x
+   pnpm --version    # Should be 9.x.x
+   ```
+
+2. **Dependency issues**
+   ```bash
+   # Clean install dependencies
+   rm -rf node_modules
+   pnpm install --frozen-lockfile
+   ```
+
+3. **Cached test results**
+   ```bash
+   # Clear Vitest cache
+   rm -rf node_modules/.vitest
+   pnpm test:run
+   ```
+
+4. **File system case sensitivity**
+   - CI uses Linux (case-sensitive)
+   - Ensure import paths match exact file names
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+
+Quick checklist:
+- ✅ Follow TDD workflow (test first)
+- ✅ Maintain 80%+ coverage
+- ✅ Use conventional commits
+- ✅ Pass all CI checks
+
+## 📄 ライセンス
+
+MIT
