@@ -1,14 +1,20 @@
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: 'src',
   build: {
-    outDir: '../dist',
+    lib: {
+      entry: resolve(__dirname, 'src/index.ts'),
+      name: 'AiCliTemplate',
+      fileName: 'index',
+      formats: ['es', 'cjs'],
+    },
+    outDir: 'dist',
     emptyOutDir: true,
   },
   resolve: {
     alias: {
-      '@': '/src',
+      '@': resolve(__dirname, 'src'),
     },
   },
   server: {

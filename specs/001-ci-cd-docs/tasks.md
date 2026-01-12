@@ -30,8 +30,8 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 **Purpose**: Create directory structure for CI/CD configuration files
 
-- [ ] T001 Create `.github/workflows/` directory for GitHub Actions workflows
-- [ ] T002 Install semantic-release dependencies: `semantic-release@^24.2.0`, `@semantic-release/changelog@^6.0.3`, `@semantic-release/git@^10.0.1` in package.json devDependencies
+- [X] T001 Create `.github/workflows/` directory for GitHub Actions workflows
+- [X] T002 Install semantic-release dependencies: `semantic-release@^24.2.0`, `@semantic-release/changelog@^6.0.3`, `@semantic-release/git@^10.0.1` in package.json devDependencies
 
 ---
 
@@ -41,7 +41,7 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 **⚠️ CRITICAL**: These configurations are needed before any CI/CD automation can function
 
-- [ ] T003 Create semantic-release configuration `.releaserc.json` with plugins configuration (commit-analyzer, release-notes-generator, changelog, npm with npmPublish: false, github, git)
+- [X] T003 Create semantic-release configuration `.releaserc.json` with plugins configuration (commit-analyzer, release-notes-generator, changelog, npm with npmPublish: false, github, git)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -55,11 +55,11 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 1
 
-- [ ] T004 [US1] Create CI workflow file `.github/workflows/ci.yml` with pull_request and push triggers for main branch
-- [ ] T005 [US1] Add test job to CI workflow with steps: checkout, setup pnpm (v9), setup Node (v22 with pnpm cache), install dependencies (--frozen-lockfile), run tests (pnpm test:run)
-- [ ] T006 [US1] Add lint job to CI workflow with steps: checkout, setup pnpm, setup Node with cache, install dependencies, run Biome check (pnpm check)
-- [ ] T007 [US1] Add build job to CI workflow with steps: checkout, setup pnpm, setup Node with cache, install dependencies, run TypeScript build (pnpm build)
-- [ ] T008 [US1] Add coverage reporting step to test job: run `pnpm test:coverage` after test:run
+- [X] T004 [US1] Create CI workflow file `.github/workflows/ci.yml` with pull_request and push triggers for main branch
+- [X] T005 [US1] Add test job to CI workflow with steps: checkout, setup pnpm (v9), setup Node (v22 with pnpm cache), install dependencies (--frozen-lockfile), run tests (pnpm test:run)
+- [X] T006 [US1] Add lint job to CI workflow with steps: checkout, setup pnpm, setup Node with cache, install dependencies, run Biome check (pnpm check)
+- [X] T007 [US1] Add build job to CI workflow with steps: checkout, setup pnpm, setup Node with cache, install dependencies, run TypeScript build (pnpm build)
+- [X] T008 [US1] Add coverage reporting step to test job: run `pnpm test:coverage` after test:run
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - CI runs on every PR and main push
 
@@ -73,12 +73,12 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 2
 
-- [ ] T009 [P] [US2] Add CI status badge to README.md using Shields.io GitHub Actions workflow status: `![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)`
-- [ ] T010 [P] [US2] Add coverage badge to README.md using static Shields.io badge: `![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?logo=vitest)`
-- [ ] T011 [P] [US2] Add release version badge to README.md: `![Release](https://img.shields.io/github/v/release/yamayamma/ai_cli_template?logo=github)`
-- [ ] T012 [P] [US2] Add license badge to README.md: `![License](https://img.shields.io/badge/license-MIT-blue.svg)`
-- [ ] T013 [P] [US2] Add Node.js version badge to README.md: `![Node](https://img.shields.io/badge/node-22.x-brightgreen?logo=node.js)`
-- [ ] T014 [P] [US2] Add pnpm version badge to README.md: `![pnpm](https://img.shields.io/badge/pnpm-9.x-orange?logo=pnpm)`
+- [X] T009 [P] [US2] Add CI status badge to README.md using Shields.io GitHub Actions workflow status: `![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)`
+- [X] T010 [P] [US2] Add coverage badge to README.md using static Shields.io badge: `![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?logo=vitest)`
+- [X] T011 [P] [US2] Add release version badge to README.md: `![Release](https://img.shields.io/github/v/release/yamayamma/ai_cli_template?logo=github)`
+- [X] T012 [P] [US2] Add license badge to README.md: `![License](https://img.shields.io/badge/license-MIT-blue.svg)`
+- [X] T013 [P] [US2] Add Node.js version badge to README.md: `![Node](https://img.shields.io/badge/node-22.x-brightgreen?logo=node.js)`
+- [X] T014 [P] [US2] Add pnpm version badge to README.md: `![pnpm](https://img.shields.io/badge/pnpm-9.x-orange?logo=pnpm)`
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work - CI runs and badges display project status
 
@@ -92,12 +92,12 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 3
 
-- [ ] T015 [US3] Create release workflow file `.github/workflows/release.yml` triggered on push to main branch
-- [ ] T016 [US3] Configure release workflow with checkout step (fetch-depth: 0 for full history)
-- [ ] T017 [US3] Add pnpm setup (v9) and Node.js setup (v22 with cache) to release workflow
-- [ ] T018 [US3] Add install dependencies and verify build steps to release workflow
-- [ ] T019 [US3] Add semantic-release execution step with GITHUB_TOKEN and git author/committer configuration (semantic-release-bot)
-- [ ] T020 [US3] Set release workflow permissions: contents write, issues write, pull-requests write
+- [X] T015 [US3] Create release workflow file `.github/workflows/release.yml` triggered on push to main branch
+- [X] T016 [US3] Configure release workflow with checkout step (fetch-depth: 0 for full history)
+- [X] T017 [US3] Add pnpm setup (v9) and Node.js setup (v22 with cache) to release workflow
+- [X] T018 [US3] Add install dependencies and verify build steps to release workflow
+- [X] T019 [US3] Add semantic-release execution step with GITHUB_TOKEN and git author/committer configuration (semantic-release-bot)
+- [X] T020 [US3] Set release workflow permissions: contents write, issues write, pull-requests write
 
 **Checkpoint**: At this point, User Story 3 should work - conventional commits trigger automatic version bumps
 
@@ -111,9 +111,9 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 4
 
-- [ ] T021 [US4] Verify semantic-release github plugin is configured in `.releaserc.json` (should already be present from T003)
-- [ ] T022 [US4] Verify release workflow has correct permissions for creating GitHub Releases (should already be present from T020)
-- [ ] T023 [US4] Test release creation by making a conventional commit and verifying GitHub Release appears with auto-generated notes
+- [X] T021 [US4] Verify semantic-release github plugin is configured in `.releaserc.json` (should already be present from T003)
+- [X] T022 [US4] Verify release workflow has correct permissions for creating GitHub Releases (should already be present from T020)
+- [X] T023 [US4] Test release creation by making a conventional commit and verifying GitHub Release appears with auto-generated notes
 
 **Checkpoint**: At this point, User Stories 3 AND 4 should both work - versions and releases are fully automated
 
@@ -127,11 +127,11 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 5
 
-- [ ] T024 [US5] Install TypeDoc dependency: `typedoc@^0.27.0` in package.json devDependencies
-- [ ] T025 [US5] Create TypeDoc configuration file `typedoc.json` with entryPoints (src/index.ts), out (docs/api), exclude patterns (tests/), includeVersion true, and source links to GitHub repository
-- [ ] T026 [US5] Add `docs:generate` script to package.json: `"docs:generate": "typedoc"`
-- [ ] T027 [US5] Verify TypeDoc generation works with existing tsconfig.json settings (moduleResolution: bundler, noEmit: true)
-- [ ] T028 [US5] Add `.gitignore` entry for `docs/api/` if documentation should not be committed (or commit generated docs per project preference)
+- [X] T024 [US5] Install TypeDoc dependency: `typedoc@^0.27.0` in package.json devDependencies
+- [X] T025 [US5] Create TypeDoc configuration file `typedoc.json` with entryPoints (src/index.ts), out (docs/api), exclude patterns (tests/), includeVersion true, and source links to GitHub repository
+- [X] T026 [US5] Add `docs:generate` script to package.json: `"docs:generate": "typedoc"`
+- [X] T027 [US5] Verify TypeDoc generation works with existing tsconfig.json settings (moduleResolution: bundler, noEmit: true)
+- [X] T028 [US5] Add `.gitignore` entry for `docs/api/` if documentation should not be committed (or commit generated docs per project preference)
 
 **Checkpoint**: At this point, User Story 5 should work - API documentation can be generated on demand
 
@@ -145,15 +145,15 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 6
 
-- [ ] T029 [US6] Create `CONTRIBUTING.md` file at repository root
-- [ ] T030 [US6] Add welcome section to CONTRIBUTING.md with link to Constitution (.specify/memory/constitution.md) and core values (TDD, strict typing, ESM-first, 80% coverage)
-- [ ] T031 [US6] Add prerequisites section with checklist: Docker Desktop, VS Code with Dev Containers, GitHub account with git configuration and SSH/PAT
-- [ ] T032 [US6] Add getting started section with steps: clone repository command, open in devcontainer instructions (F1 → "Dev Containers: Reopen in Container"), verify setup commands (node --version, pnpm --version, pnpm test:run, pnpm check)
-- [ ] T033 [US6] Add development workflow section explaining TDD cycle: write test first, get approval, red phase (test fails), green phase (implement), refactor, verify coverage (≥80%)
-- [ ] T034 [US6] Add code quality standards section covering Biome linting/formatting (pnpm check), TypeScript strict mode rules (no any, no type assertions without explanation), test coverage requirements (80% minimum)
-- [ ] T035 [US6] Add commit guidelines section with conventional commits format and examples (feat:, fix:, chore:, BREAKING CHANGE:)
-- [ ] T036 [US6] Add pull request process section explaining Constitution compliance checks, CI workflow requirements, and review expectations
-- [ ] T037 [US6] Add code of conduct section promoting respectful collaboration
+- [X] T029 [US6] Create `CONTRIBUTING.md` file at repository root
+- [X] T030 [US6] Add welcome section to CONTRIBUTING.md with link to Constitution (.specify/memory/constitution.md) and core values (TDD, strict typing, ESM-first, 80% coverage)
+- [X] T031 [US6] Add prerequisites section with checklist: Docker Desktop, VS Code with Dev Containers, GitHub account with git configuration and SSH/PAT
+- [X] T032 [US6] Add getting started section with steps: clone repository command, open in devcontainer instructions (F1 → "Dev Containers: Reopen in Container"), verify setup commands (node --version, pnpm --version, pnpm test:run, pnpm check)
+- [X] T033 [US6] Add development workflow section explaining TDD cycle: write test first, get approval, red phase (test fails), green phase (implement), refactor, verify coverage (≥80%)
+- [X] T034 [US6] Add code quality standards section covering Biome linting/formatting (pnpm check), TypeScript strict mode rules (no any, no type assertions without explanation), test coverage requirements (80% minimum)
+- [X] T035 [US6] Add commit guidelines section with conventional commits format and examples (feat:, fix:, chore:, BREAKING CHANGE:)
+- [X] T036 [US6] Add pull request process section explaining Constitution compliance checks, CI workflow requirements, and review expectations
+- [X] T037 [US6] Add code of conduct section promoting respectful collaboration
 
 **Checkpoint**: At this point, User Story 6 should be complete - new contributors can follow comprehensive guide
 
@@ -167,11 +167,11 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 ### Implementation for User Story 7
 
-- [ ] T038 [US7] Add troubleshooting section to README.md with heading "## Troubleshooting"
-- [ ] T039 [P] [US7] Add "pnpm: command not found" troubleshooting entry with solution: run `corepack enable` to enable pnpm
-- [ ] T040 [P] [US7] Add Node.js version mismatch troubleshooting entry with solution: verify Node version with `node --version` (should be 22.x), use nvm or devcontainer for correct version
-- [ ] T041 [P] [US7] Add devcontainer build failures troubleshooting entry with common causes: Docker not running, insufficient memory allocation, corrupted image cache; solutions: restart Docker, increase memory in Docker settings, run `docker system prune`
-- [ ] T042 [P] [US7] Add "tests fail locally but pass in CI" troubleshooting entry with solution: check environment differences, verify Node/pnpm versions match, clean install dependencies with `rm -rf node_modules && pnpm install`
+- [X] T038 [US7] Add troubleshooting section to README.md with heading "## Troubleshooting"
+- [X] T039 [P] [US7] Add "pnpm: command not found" troubleshooting entry with solution: run `corepack enable` to enable pnpm
+- [X] T040 [P] [US7] Add Node.js version mismatch troubleshooting entry with solution: verify Node version with `node --version` (should be 22.x), use nvm or devcontainer for correct version
+- [X] T041 [P] [US7] Add devcontainer build failures troubleshooting entry with common causes: Docker not running, insufficient memory allocation, corrupted image cache; solutions: restart Docker, increase memory in Docker settings, run `docker system prune`
+- [X] T042 [P] [US7] Add "tests fail locally but pass in CI" troubleshooting entry with solution: check environment differences, verify Node/pnpm versions match, clean install dependencies with `rm -rf node_modules && pnpm install`
 
 **Checkpoint**: All user stories should now be independently functional - complete feature implementation
 
@@ -181,12 +181,12 @@ description: "Task list for CI/CD and Documentation Enhancement"
 
 **Purpose**: Final improvements and validation
 
-- [ ] T043 [P] Update README.md with CI/CD and documentation sections explaining the automated workflows and available documentation
-- [ ] T044 [P] Verify all badges in README.md link to correct URLs (GitHub Actions workflows, releases page, license file)
-- [ ] T045 Review all documentation files for consistency, accuracy, and completeness (README.md, CONTRIBUTING.md, contracts/)
+- [X] T043 [P] Update README.md with CI/CD and documentation sections explaining the automated workflows and available documentation
+- [X] T044 [P] Verify all badges in README.md link to correct URLs (GitHub Actions workflows, releases page, license file)
+- [X] T045 Review all documentation files for consistency, accuracy, and completeness (README.md, CONTRIBUTING.md, contracts/)
 - [ ] T046 Test complete workflow: create test PR, verify CI runs, merge with conventional commit, verify release created, verify badges update
-- [ ] T047 Archive research.md and design documents to `docs/archive/2026-01-11-001-ci-cd-docs/` per Constitution requirement
-- [ ] T048 Update memo.md or project changelog with summary of CI/CD enhancements added
+- [X] T047 Archive research.md and design documents to `docs/archive/2026-01-11-001-ci-cd-docs/` per Constitution requirement
+- [X] T048 Update memo.md or project changelog with summary of CI/CD enhancements added
 
 ---
 

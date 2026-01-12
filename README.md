@@ -1,5 +1,12 @@
 # TypeScript Web App Development Template
 
+![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?logo=vitest)
+![Release](https://img.shields.io/github/v/release/yamayamma/ai_cli_template?logo=github)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-22.x-brightgreen?logo=node.js)
+![pnpm](https://img.shields.io/badge/pnpm-9.x-orange?logo=pnpm)
+
 TypeScript + GitHub Copilot を使用したWebアプリケーション開発のためのdevcontainerテンプレートです。
 
 ## 📋 Constitution（プロジェクト原則）
@@ -48,7 +55,56 @@ pnpm check             # リント + フォーマット（自動修正）
 # ビルド
 pnpm build             # プロダクションビルド
 pnpm preview           # ビルド結果のプレビュー
+
+# ドキュメント
+pnpm docs:generate     # API ドキュメント生成
 ```
+
+## 🔄 CI/CD & Automation
+
+This project uses automated workflows for quality assurance and releases:
+
+### Continuous Integration (CI)
+
+Every pull request and push to `main` triggers:
+
+- ✅ **Test Job** - Runs all unit tests with coverage reporting
+- ✅ **Lint Job** - Checks code quality with Biome
+- ✅ **Build Job** - Verifies TypeScript compilation
+
+Status: ![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
+
+### Automated Releases
+
+Commits to `main` with [conventional commit](https://www.conventionalcommits.org/) messages automatically:
+
+1. **Analyze commits** - Determines version bump (major/minor/patch)
+2. **Update version** - Updates `package.json` and `CHANGELOG.md`
+3. **Create release** - Publishes GitHub Release with release notes
+4. **Update badges** - Reflects latest version in README
+
+**Commit examples**:
+- `feat: add new feature` → Minor version bump (1.0.0 → 1.1.0)
+- `fix: resolve bug` → Patch version bump (1.1.0 → 1.1.1)
+- `feat!: breaking change` → Major version bump (1.1.1 → 2.0.0)
+
+## 📚 Documentation
+
+### API Documentation
+
+Generate HTML documentation from TypeScript code:
+
+```bash
+pnpm docs:generate
+```
+
+Output: [docs/api/index.html](docs/api/index.html)
+
+### Project Documentation
+
+- **[Constitution](.specify/memory/constitution.md)** - Project principles and standards
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+- **[docs/archive/](docs/archive/)** - Archived design documents
 
 ## 📦 技術スタック
 
@@ -168,6 +224,94 @@ gh copilot explain "pnpm test:coverage"
 - 80%以上のカバレッジ必須
 - テストが生きたドキュメント
 
-## 📄 ライセンス
+## � Troubleshooting
+
+### pnpm: command not found
+
+**Solution**: Enable corepack to use pnpm
+
+```bash
+corepack enable
+```
+
+If that doesn't work, restart the devcontainer:
+- Press `F1` → "Dev Containers: Rebuild Container"
+
+### Node.js version mismatch
+
+**Solution**: Verify you're using Node.js 22.x
+
+```bash
+node --version  # Should show v22.x.x
+```
+
+**Fixes**:
+- Use the devcontainer (recommended) - Node version is managed automatically
+- Use nvm: `nvm install 22 && nvm use 22`
+- Check your PATH if multiple Node versions are installed
+
+### Devcontainer build failures
+
+**Common causes and solutions**:
+
+1. **Docker not running**
+   ```bash
+   # Verify Docker is running
+   docker ps
+   ```
+   If it fails, start Docker Desktop
+
+2. **Insufficient memory**
+   - Open Docker Desktop → Settings → Resources
+   - Increase memory allocation to at least 4GB
+   - Click "Apply & Restart"
+
+3. **Corrupted image cache**
+   ```bash
+   # Clean up Docker system
+   docker system prune -a
+   ```
+   Then rebuild: `F1` → "Dev Containers: Rebuild Container"
+
+### Tests fail locally but pass in CI
+
+**Common causes**:
+
+1. **Environment differences**
+   ```bash
+   # Check versions match CI
+   node --version    # Should be v22.x.x
+   pnpm --version    # Should be 9.x.x
+   ```
+
+2. **Dependency issues**
+   ```bash
+   # Clean install dependencies
+   rm -rf node_modules
+   pnpm install --frozen-lockfile
+   ```
+
+3. **Cached test results**
+   ```bash
+   # Clear Vitest cache
+   rm -rf node_modules/.vitest
+   pnpm test:run
+   ```
+
+4. **File system case sensitivity**
+   - CI uses Linux (case-sensitive)
+   - Ensure import paths match exact file names
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+
+Quick checklist:
+- ✅ Follow TDD workflow (test first)
+- ✅ Maintain 80%+ coverage
+- ✅ Use conventional commits
+- ✅ Pass all CI checks
+
+## �📄 ライセンス
 
 MIT
