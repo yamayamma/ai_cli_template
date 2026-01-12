@@ -1,0 +1,266 @@
+# CI Workflow Contract
+
+**Purpose**: Define the exact structure and behavior of the CI workflow  
+**File Location**: `.github/workflows/ci.yml`  
+**Triggers**: Pull requests to `main`, pushes to `main`
+
+## Workflow Structure
+
+```yaml
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run tests
+        run: pnpm test:run
+        
+      - name: Generate coverage report
+        run: pnpm test:coverage
+        
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run Biome check
+        run: pnpm check
+        
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build TypeScript
+        run: pnpm build
+```
+
+## Job Specifications
+
+### Job: `test`
+**Purpose**: Run unit tests and generate coverage report  
+**Runner**: ubuntu-latest  
+**Node Version**: 22  
+**Timeout**: Default (360 minutes, but typically completes in < 1 minute)
+
+**Steps**:
+1. Checkout code (fetch-depth: default)
+2. Setup pnpm (version 9)
+3. Setup Node.js with pnpm cache
+4. Install dependencies (frozen lockfile for reproducibility)
+5. Run tests without watch mode (`test:run`)
+6. Generate coverage report (`test:coverage`)
+
+**Exit Conditions**:
+- ✅ Success: All tests pass, coverage ≥ 80%
+- ❌ Failure: Any test fails OR coverage < 80%
+
+**Artifacts**: None (coverage report stored in job logs)
+
+---
+
+### Job: `lint`
+**Purpose**: Verify code quality (linting + formatting)  
+**Runner**: ubuntu-latest  
+**Node Version**: 22  
+**Timeout**: Default (typically completes in < 30 seconds)
+
+**Steps**:
+1. Checkout code
+2. Setup pnpm (version 9)
+3. Setup Node.js with pnpm cache
+4. Install dependencies (frozen lockfile)
+5. Run Biome check (lint + format check)
+
+**Exit Conditions**:
+- ✅ Success: No linting errors, code is formatted
+- ❌ Failure: Linting errors OR formatting issues detected
+
+**Artifacts**: None
+
+---
+
+### Job: `build`
+**Purpose**: Verify TypeScript compilation  
+**Runner**: ubuntu-latest  
+**Node Version**: 22  
+**Timeout**: Default (typically completes in < 1 minute)
+
+**Steps**:
+1. Checkout code
+2. Setup pnpm (version 9)
+3. Setup Node.js with pnpm cache
+4. Install dependencies (frozen lockfile)
+5. Build with `pnpm build` (TypeScript compilation)
+
+**Exit Conditions**:
+- ✅ Success: TypeScript compiles without errors
+- ❌ Failure: Compilation errors
+
+**Artifacts**: None (template project, no distribution artifacts)
+
+---
+
+## Parallel Execution
+
+All three jobs run in **parallel** (no dependencies between them):
+- `test` || `lint` || `build`
+
+**Rationale**: Faster feedback (jobs complete in parallel, not sequential)
+
+---
+
+## Caching Strategy
+
+**pnpm Store Cache**:
+- Managed by: `actions/setup-node@v4` with `cache: 'pnpm'`
+- Cache Key: Hash of `pnpm-lock.yaml`
+- Cache Hit: Restores in ~5 seconds
+- Cache Miss: Full install takes ~15-20 seconds
+
+**No manual cache configuration required** - setup-node handles it automatically.
+
+---
+
+## Environment Variables
+
+**Required**: None (no secrets needed for testing/linting/building)
+
+**Available** (GitHub Actions built-ins):
+- `GITHUB_TOKEN`: Automatically provided (read-only for PRs from forks)
+- `CI=true`: Set by GitHub Actions
+
+---
+
+## Branch Protection Rules (Recommended)
+
+```yaml
+# Settings → Branches → Branch protection rules for 'main'
+Require status checks to pass before merging: ✓
+  - test
+  - lint
+  - build
+Require branches to be up to date before merging: ✓
+```
+
+---
+
+## Performance Targets
+
+| Job | Target Time | Typical Time (Cache Hit) |
+|-----|-------------|--------------------------|
+| test | < 2 minutes | ~30 seconds |
+| lint | < 1 minute | ~10 seconds |
+| build | < 2 minutes | ~20 seconds |
+
+**Total Pipeline**: < 3 minutes (all jobs parallel)
+
+---
+
+## Edge Cases Handled
+
+### 1. Fork Pull Requests
+- **Behavior**: Workflow runs with read-only `GITHUB_TOKEN`
+- **Limitation**: Cannot write comments or update PR status (acceptable)
+- **Workaround**: None needed (tests still run and report in checks)
+
+### 2. Dependabot PRs
+- **Behavior**: Same as fork PRs (restricted permissions)
+- **Note**: May need separate workflow with `pull_request_target` for auto-merge (out of scope)
+
+### 3. Empty Commits
+- **Behavior**: Workflow runs (checks still pass)
+- **Rationale**: Ensure baseline still works
+
+### 4. Concurrent Pushes
+- **Behavior**: GitHub Actions queues workflows
+- **Note**: Previous runs can be cancelled with `concurrency` group (optional optimization)
+
+---
+
+## Validation Checklist
+
+Before merging this contract:
+- [ ] Node version matches devcontainer (22)
+- [ ] pnpm version matches packageManager field (9)
+- [ ] All script names exist in package.json (`test:run`, `test:coverage`, `check`, `build`)
+- [ ] Jobs run in parallel (no `needs:` dependencies)
+- [ ] Frozen lockfile used (`--frozen-lockfile`)
+- [ ] No secrets required
+
+---
+
+## Future Enhancements (Not in MVP)
+
+- Codecov integration (coverage badge automation)
+- Concurrency cancellation (cancel outdated workflow runs)
+- Matrix builds (multiple Node versions - NOT needed for template)
+- Artifact upload (build outputs - NOT needed for template)
+
+---
+
+**Contract Version**: 1.0  
+**Last Updated**: 2026-01-12  
+**Status**: ✅ Ready for Implementation

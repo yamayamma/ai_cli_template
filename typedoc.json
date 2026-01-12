@@ -1,0 +1,23 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/index.ts"],
+  "out": "docs/api",
+  "plugin": [],
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "readme": "README.md",
+  "name": "ai_cli_template API Documentation",
+  "includeVersion": true,
+  "sort": ["source-order"],
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": false
+  }
+}
