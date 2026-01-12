@@ -224,7 +224,7 @@ gh copilot explain "pnpm test:coverage"
 - 80%以上のカバレッジ必須
 - テストが生きたドキュメント
 
-## � Troubleshooting
+## 🔧 Troubleshooting
 
 ### pnpm: command not found
 
@@ -312,6 +312,6 @@ Quick checklist:
 - ✅ Use conventional commits
 - ✅ Pass all CI checks
 
-## �📄 ライセンス
+## 📄 ライセンス
 
 MIT
