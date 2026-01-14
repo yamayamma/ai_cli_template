@@ -60,51 +60,51 @@ pnpm preview           # ビルド結果のプレビュー
 pnpm docs:generate     # API ドキュメント生成
 ```
 
-## 🔄 CI/CD & Automation
+## 🔄 CI/CD と自動化
 
-This project uses automated workflows for quality assurance and releases:
+本プロジェクトでは品質保証とリリースのための自動化ワークフローを使用しています。
 
-### Continuous Integration (CI)
+### 継続的インテグレーション（CI）
 
-Every pull request and push to `main` triggers:
+すべてのプルリクエストと `main` へのプッシュで以下が実行されます：
 
-- ✅ **Test Job** - Runs all unit tests with coverage reporting
-- ✅ **Lint Job** - Checks code quality with Biome
-- ✅ **Build Job** - Verifies TypeScript compilation
+- ✅ **Test ジョブ** - カバレッジレポート付きで全ユニットテストを実行
+- ✅ **Lint ジョブ** - Biomeによるコード品質チェック
+- ✅ **Build ジョブ** - TypeScriptコンパイルの検証
 
-Status: ![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
+ステータス: ![CI](https://img.shields.io/github/actions/workflow/status/yamayamma/ai_cli_template/ci.yml?branch=main&label=CI&logo=github)
 
-### Automated Releases
+### 自動リリース
 
-Commits to `main` with [conventional commit](https://www.conventionalcommits.org/) messages automatically:
+[Conventional Commit](https://www.conventionalcommits.org/) 形式のコミットが `main` にマージされると自動的に：
 
-1. **Analyze commits** - Determines version bump (major/minor/patch)
-2. **Update version** - Updates `package.json` and `CHANGELOG.md`
-3. **Create release** - Publishes GitHub Release with release notes
-4. **Update badges** - Reflects latest version in README
+1. **コミット解析** - バージョン更新の種類を判定（major/minor/patch）
+2. **バージョン更新** - `package.json` と `CHANGELOG.md` を更新
+3. **リリース作成** - リリースノート付きでGitHubリリースを公開
+4. **バッジ更新** - READMEに最新バージョンを反映
 
-**Commit examples**:
-- `feat: add new feature` → Minor version bump (1.0.0 → 1.1.0)
-- `fix: resolve bug` → Patch version bump (1.1.0 → 1.1.1)
-- `feat!: breaking change` → Major version bump (1.1.1 → 2.0.0)
+**コミット例**：
+- `feat: add new feature` → マイナーバージョン更新 (1.0.0 → 1.1.0)
+- `fix: resolve bug` → パッチバージョン更新 (1.1.0 → 1.1.1)
+- `feat!: breaking change` → メジャーバージョン更新 (1.1.1 → 2.0.0)
 
-## 📚 Documentation
+## 📚 ドキュメント
 
-### API Documentation
+### APIドキュメント
 
-Generate HTML documentation from TypeScript code:
+TypeScriptコードからHTMLドキュメントを生成：
 
 ```bash
 pnpm docs:generate
 ```
 
-Output: [docs/api/index.html](docs/api/index.html)
+出力先: [docs/api/index.html](docs/api/index.html)
 
-### Project Documentation
+### プロジェクトドキュメント
 
-- **[Constitution](.specify/memory/constitution.md)** - Project principles and standards
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
-- **[docs/archive/](docs/archive/)** - Archived design documents
+- **[Constitution](.specify/memory/constitution.md)** - プロジェクト原則と基準
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 貢献ガイドライン
+- **[docs/archive/](docs/archive/)** - アーカイブされた設計ドキュメント
 
 ## 📦 技術スタック
 
@@ -224,93 +224,93 @@ gh copilot explain "pnpm test:coverage"
 - 80%以上のカバレッジ必須
 - テストが生きたドキュメント
 
-## 🔧 Troubleshooting
+## 🔧 トラブルシューティング
 
 ### pnpm: command not found
 
-**Solution**: Enable corepack to use pnpm
+**解決方法**: corepackを有効にしてpnpmを使用可能にする
 
 ```bash
 corepack enable
 ```
 
-If that doesn't work, restart the devcontainer:
-- Press `F1` → "Dev Containers: Rebuild Container"
+それでも動作しない場合は、devcontainerを再構築してください：
+- `F1` を押して → "Dev Containers: Rebuild Container" を選択
 
-### Node.js version mismatch
+### Node.jsバージョンの不一致
 
-**Solution**: Verify you're using Node.js 22.x
+**解決方法**: Node.js 22.xを使用していることを確認
 
 ```bash
-node --version  # Should show v22.x.x
+node --version  # v22.x.x と表示されるはず
 ```
 
-**Fixes**:
-- Use the devcontainer (recommended) - Node version is managed automatically
-- Use nvm: `nvm install 22 && nvm use 22`
-- Check your PATH if multiple Node versions are installed
+**対処法**:
+- devcontainerを使用（推奨） - Nodeバージョンは自動管理されます
+- nvmを使用: `nvm install 22 && nvm use 22`
+- 複数のNodeバージョンがインストールされている場合はPATHを確認
 
-### Devcontainer build failures
+### devcontainerのビルド失敗
 
-**Common causes and solutions**:
+**よくある原因と解決方法**:
 
-1. **Docker not running**
+1. **Dockerが起動していない**
    ```bash
-   # Verify Docker is running
+   # Dockerが実行中か確認
    docker ps
    ```
-   If it fails, start Docker Desktop
+   失敗する場合は、Docker Desktopを起動してください
 
-2. **Insufficient memory**
-   - Open Docker Desktop → Settings → Resources
-   - Increase memory allocation to at least 4GB
-   - Click "Apply & Restart"
+2. **メモリ不足**
+   - Docker Desktop を開く → Settings → Resources
+   - メモリ割り当てを少なくとも4GBに増やす
+   - "Apply & Restart" をクリック
 
-3. **Corrupted image cache**
+3. **イメージキャッシュの破損**
    ```bash
-   # Clean up Docker system
+   # Dockerシステムをクリーンアップ
    docker system prune -a
    ```
-   Then rebuild: `F1` → "Dev Containers: Rebuild Container"
+   その後、再構築: `F1` → "Dev Containers: Rebuild Container"
 
-### Tests fail locally but pass in CI
+### ローカルでテストが失敗するがCIでは成功する
 
-**Common causes**:
+**よくある原因**:
 
-1. **Environment differences**
+1. **環境の差異**
    ```bash
-   # Check versions match CI
-   node --version    # Should be v22.x.x
-   pnpm --version    # Should be 9.x.x
+   # バージョンがCIと一致しているか確認
+   node --version    # v22.x.x であるべき
+   pnpm --version    # 9.x.x であるべき
    ```
 
-2. **Dependency issues**
+2. **依存関係の問題**
    ```bash
-   # Clean install dependencies
+   # 依存関係をクリーンインストール
    rm -rf node_modules
    pnpm install --frozen-lockfile
    ```
 
-3. **Cached test results**
+3. **テスト結果のキャッシュ**
    ```bash
-   # Clear Vitest cache
+   # Vitestキャッシュをクリア
    rm -rf node_modules/.vitest
    pnpm test:run
    ```
 
-4. **File system case sensitivity**
-   - CI uses Linux (case-sensitive)
-   - Ensure import paths match exact file names
+4. **ファイルシステムの大文字小文字の区別**
+   - CIはLinuxを使用（大文字小文字を区別）
+   - importパスがファイル名と完全に一致していることを確認
 
-## 🤝 Contributing
+## 🤝 貢献
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+詳細な貢献ガイドラインは [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
-Quick checklist:
-- ✅ Follow TDD workflow (test first)
-- ✅ Maintain 80%+ coverage
-- ✅ Use conventional commits
-- ✅ Pass all CI checks
+クイックチェックリスト:
+- ✅ TDDワークフローに従う（テストファースト）
+- ✅ 80%以上のカバレッジを維持
+- ✅ Conventional Commitsを使用
+- ✅ すべてのCIチェックをパス
 
 ## 📄 ライセンス
 
