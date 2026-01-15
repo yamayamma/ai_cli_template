@@ -184,7 +184,7 @@ pnpm test:coverage
 
 ## 📚 Speckitワークフロー
 
-このプロジェクトは [Speckit](https://github.com/your-org/speckit) を使用した仕様駆動開発をサポートします。
+このプロジェクトは [Speckit](https://github.com/github/spec-kit) を使用した仕様駆動開発をサポートします。
 
 ```bash
 /speckit.constitution  # プロジェクト原則の確立（完了✅）
