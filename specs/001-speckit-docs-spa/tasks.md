@@ -153,23 +153,23 @@
 
 ### Tests for User Story 3
 
-- [ ] T055 [P] [US3] E2E test for commands navigation in spa/tests/e2e/commands.spec.ts
-- [ ] T056 [P] [US3] Unit test for Commands page in spa/tests/unit/pages/Commands.test.tsx
-- [ ] T057 [P] [US3] Unit test for CommandSearch in spa/tests/unit/components/CommandSearch.test.tsx
+- [X] T055 [P] [US3] E2E test for commands navigation in spa/tests/e2e/commands.spec.ts
+- [X] T056 [P] [US3] Unit test for Commands page in spa/tests/unit/pages/Commands.test.tsx
+- [X] T057 [P] [US3] Unit test for CommandSearch in spa/tests/unit/components/CommandSearch.test.tsx
 
 ### Implementation for User Story 3
 
-- [ ] T058 [P] [US3] Create CommandCard component in spa/src/components/ui/CommandCard.tsx
-- [ ] T059 [P] [US3] Create CodeBlock component in spa/src/components/ui/CodeBlock.tsx
-- [ ] T060 [US3] Create CommandSearch component in spa/src/components/interactive/CommandSearch.tsx
-- [ ] T061 [US3] Create Commands page with search in spa/src/pages/Commands.tsx
-- [ ] T062 [US3] Create CommandDetail page in spa/src/pages/CommandDetail.tsx
-- [ ] T063 [P] [US3] Create commands index MDX in spa/src/content/commands/index.mdx
-- [ ] T064 [P] [US3] Create specify command MDX in spa/src/content/commands/specify.mdx
-- [ ] T065 [P] [US3] Create clarify command MDX in spa/src/content/commands/clarify.mdx
-- [ ] T066 [P] [US3] Create plan command MDX in spa/src/content/commands/plan.mdx
-- [ ] T067 [P] [US3] Create execute command MDX in spa/src/content/commands/execute.mdx
-- [ ] T068 [P] [US3] Create verify command MDX in spa/src/content/commands/verify.mdx
+- [X] T058 [P] [US3] Create CommandCard component in spa/src/components/ui/CommandCard.tsx
+- [X] T059 [P] [US3] Create CodeBlock component in spa/src/components/ui/CodeBlock.tsx
+- [X] T060 [US3] Create CommandSearch component in spa/src/components/interactive/CommandSearch.tsx
+- [X] T061 [US3] Create Commands page with search in spa/src/pages/Commands.tsx
+- [X] T062 [US3] Create CommandDetail page in spa/src/pages/CommandDetail.tsx
+- [X] T063 [P] [US3] Create commands index MDX in spa/src/content/commands/index.mdx
+- [X] T064 [P] [US3] Create specify command MDX in spa/src/content/commands/specify.mdx
+- [X] T065 [P] [US3] Create clarify command MDX in spa/src/content/commands/clarify.mdx
+- [X] T066 [P] [US3] Create plan command MDX in spa/src/content/commands/plan.mdx
+- [X] T067 [P] [US3] Create execute command MDX in spa/src/content/commands/execute.mdx
+- [X] T068 [P] [US3] Create verify command MDX in spa/src/content/commands/verify.mdx
 
 **Checkpoint**: User Story 3完了 - コマンドリファレンスを独立してテスト可能
 

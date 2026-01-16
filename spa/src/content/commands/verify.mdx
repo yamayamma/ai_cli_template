@@ -1,0 +1,87 @@
+# verify コマンド
+
+実装が仕様を満たしているか検証します。
+
+## 概要
+
+`verify` コマンドは、実装されたコードが仕様書の要件を満たしているかを検証します。
+テストの実行、コードレビュー、仕様との整合性チェックを行います。
+
+## 構文
+
+```bash
+speckit verify [options]
+```
+
+## オプション
+
+| オプション | 説明 | デフォルト |
+|-----------|------|----------|
+| `--spec`, `-s` | 検証対象の仕様 | 現在の仕様 |
+| `--test`, `-t` | テストのみ実行 | `false` |
+| `--coverage` | カバレッジを表示 | `false` |
+| `--strict` | 厳格モード | `false` |
+
+## 例
+
+### 基本的な検証
+
+```bash
+$ speckit verify
+検証中: 001-user-auth
+
+✓ テスト実行: 15/15 passed
+✓ 仕様との整合性: 8/8 要件を満たしています
+✓ コードカバレッジ: 87%
+
+検証結果: PASSED
+```
+
+### テストのみ実行
+
+```bash
+$ speckit verify --test
+テストを実行中...
+
+  ✓ AuthController
+    ✓ should login with valid credentials (45ms)
+    ✓ should reject invalid password (12ms)
+    ✓ should handle session expiry (23ms)
+    
+  ✓ UserService
+    ✓ should create user (34ms)
+    ✓ should hash password (15ms)
+
+Tests: 5 passed, 5 total
+Time: 2.3s
+```
+
+### カバレッジ付き検証
+
+```bash
+$ speckit verify --coverage
+検証中...
+
+カバレッジレポート:
+----------------------------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines
+----------------------|---------|----------|---------|--------
+src/controllers/      |   92.3  |    85.7  |   100   |   91.2
+src/services/         |   88.9  |    80.0  |   90.0  |   87.5
+src/repositories/     |   95.0  |    90.0  |   100   |   94.2
+----------------------------------------
+All files             |   91.4  |    85.2  |   96.7  |   90.9
+```
+
+## 検証項目
+
+1. **テスト実行** - 単体テスト・統合テストの実行
+2. **仕様整合性** - 要件の充足確認
+3. **コードカバレッジ** - テストカバレッジの計測
+4. **静的解析** - リンター・型チェック
+
+## 関連コマンド
+
+- `execute` - 実装を実行
+- `plan` - 実装計画を確認
+- `tasks` - タスクの進捗を確認

@@ -42,12 +42,14 @@ export interface CommandOption {
   shortName?: string
   description: string
   required: boolean
+  default?: string
   defaultValue?: string
 }
 
 export interface CommandExample {
   title: string
   command: string
+  code: string
   description: string
   output?: string
 }
@@ -55,8 +57,12 @@ export interface CommandExample {
 export interface Command {
   id: string
   name: string
+  alias?: string
   description: string
   usage: string
+  syntax?: string
+  category: string
+  step: number
   options: CommandOption[]
   examples: CommandExample[]
   relatedSteps: string[]

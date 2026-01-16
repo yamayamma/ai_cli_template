@@ -7,6 +7,8 @@ import SDD from './pages/SDD'
 import SDDConcepts from './pages/SDDConcepts'
 import SDDComparison from './pages/SDDComparison'
 import SDDBenefits from './pages/SDDBenefits'
+import Commands from './pages/Commands'
+import CommandDetail from './pages/CommandDetail'
 
 function NotFound() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/sdd/concepts" element={<SDDConcepts />} />
           <Route path="/sdd/comparison" element={<SDDComparison />} />
           <Route path="/sdd/benefits" element={<SDDBenefits />} />
+          <Route path="/commands" element={<Commands />} />
+          <Route path="/commands/:commandId" element={<CommandDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AppLayout>
