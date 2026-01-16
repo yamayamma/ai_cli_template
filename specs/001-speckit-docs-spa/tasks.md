@@ -29,14 +29,14 @@
 
 **Purpose**: プロジェクト初期化と基本構造の作成
 
-- [ ] T001 Create spa/ directory structure per plan.md in spa/
-- [ ] T002 Initialize Vite + React + TypeScript project with `pnpm create vite` in spa/
-- [ ] T003 Install core dependencies (react-router-dom, @mdx-js/rollup, @xyflow/react) in spa/package.json
-- [ ] T004 [P] Configure TypeScript strict mode in spa/tsconfig.json
-- [ ] T005 [P] Configure Vite with MDX plugin in spa/vite.config.ts
-- [ ] T006 [P] Setup Biome for linting and formatting in spa/biome.json
-- [ ] T007 [P] Configure Vitest for unit testing in spa/vitest.config.ts
-- [ ] T008 [P] Setup Playwright for E2E testing in spa/playwright.config.ts
+- [X] T001 Create spa/ directory structure per plan.md in spa/
+- [X] T002 Initialize Vite + React + TypeScript project with `pnpm create vite` in spa/
+- [X] T003 Install core dependencies (react-router-dom, @mdx-js/rollup, @xyflow/react) in spa/package.json
+- [X] T004 [P] Configure TypeScript strict mode in spa/tsconfig.json
+- [X] T005 [P] Configure Vite with MDX plugin in spa/vite.config.ts
+- [X] T006 [P] Setup Biome for linting and formatting in spa/biome.json
+- [X] T007 [P] Configure Vitest for unit testing in spa/vitest.config.ts
+- [X] T008 [P] Setup Playwright for E2E testing in spa/playwright.config.ts
 
 ---
 
