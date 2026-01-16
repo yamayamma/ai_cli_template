@@ -101,20 +101,20 @@
 
 ### Tests for User Story 2
 
-- [ ] T035 [P] [US2] E2E test for SDD navigation in spa/tests/e2e/sdd.spec.ts
-- [ ] T036 [P] [US2] Unit test for SDD page in spa/tests/unit/pages/SDD.test.tsx
-- [ ] T037 [P] [US2] Unit test for SDDComparison page in spa/tests/unit/pages/SDDComparison.test.tsx
+- [X] T035 [P] [US2] E2E test for SDD navigation in spa/tests/e2e/sdd.spec.ts
+- [X] T036 [P] [US2] Unit test for SDD page in spa/tests/unit/pages/SDD.test.tsx
+- [X] T037 [P] [US2] Unit test for SDDComparison page in spa/tests/unit/pages/SDDComparison.test.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T038 [US2] Create SDD page in spa/src/pages/SDD.tsx
-- [ ] T039 [US2] Create SDDConcepts page in spa/src/pages/SDDConcepts.tsx
-- [ ] T040 [US2] Create SDDComparison page in spa/src/pages/SDDComparison.tsx
-- [ ] T041 [US2] Create SDDBenefits page in spa/src/pages/SDDBenefits.tsx
-- [ ] T042 [P] [US2] Create SDD index MDX in spa/src/content/sdd/index.mdx
-- [ ] T043 [P] [US2] Create SDD concepts MDX in spa/src/content/sdd/concepts.mdx
-- [ ] T044 [P] [US2] Create SDD comparison MDX in spa/src/content/sdd/comparison.mdx
-- [ ] T045 [P] [US2] Create SDD benefits MDX in spa/src/content/sdd/benefits.mdx
+- [X] T038 [US2] Create SDD page in spa/src/pages/SDD.tsx
+- [X] T039 [US2] Create SDDConcepts page in spa/src/pages/SDDConcepts.tsx
+- [X] T040 [US2] Create SDDComparison page in spa/src/pages/SDDComparison.tsx
+- [X] T041 [US2] Create SDDBenefits page in spa/src/pages/SDDBenefits.tsx
+- [X] T042 [P] [US2] Create SDD index MDX in spa/src/content/sdd/index.mdx
+- [X] T043 [P] [US2] Create SDD concepts MDX in spa/src/content/sdd/concepts.mdx
+- [X] T044 [P] [US2] Create SDD comparison MDX in spa/src/content/sdd/comparison.mdx
+- [X] T045 [P] [US2] Create SDD benefits MDX in spa/src/content/sdd/benefits.mdx
 
 **Checkpoint**: User Story 2完了 - SDDセクションを独立してテスト可能
 

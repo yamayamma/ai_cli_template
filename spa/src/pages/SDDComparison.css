@@ -1,0 +1,203 @@
+.sdd-comparison-page {
+  padding-bottom: var(--spacing-2xl);
+}
+
+.comparison-header {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-intro {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+}
+
+/* Methodologies Section */
+.methodologies-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.methodologies-section h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.methodology-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.methodology-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.methodology-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.methodology-card p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.method-tags {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.tag {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+}
+
+/* Comparison Table */
+.comparison-table-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-table-section h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.comparison-table th {
+  background-color: var(--bg-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.comparison-table th:first-child {
+  background-color: var(--bg-tertiary);
+}
+
+.dimension-name {
+  font-weight: 500;
+  background-color: var(--bg-secondary);
+  white-space: nowrap;
+}
+
+.comparison-table td {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Pros and Cons */
+.pros-cons-section h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.pros-cons-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.pros-cons-card h3 {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.pros-cons-card h4 {
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.pros, .cons {
+  margin-bottom: var(--spacing-md);
+}
+
+.pros ul, .cons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pros li, .cons li {
+  padding: var(--spacing-xs) 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.pros li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+}
+
+.cons li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-warning);
+}
+
+/* Page Navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--bg-tertiary);
+}
+
+.nav-link {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .methodology-cards,
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison-table {
+    font-size: 0.875rem;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--spacing-sm);
+  }
+}

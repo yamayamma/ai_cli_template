@@ -3,6 +3,10 @@ import AppLayout from './components/layout/AppLayout'
 import Home from './pages/Home'
 import Workflow from './pages/Workflow'
 import WorkflowStep from './pages/WorkflowStep'
+import SDD from './pages/SDD'
+import SDDConcepts from './pages/SDDConcepts'
+import SDDComparison from './pages/SDDComparison'
+import SDDBenefits from './pages/SDDBenefits'
 
 function NotFound() {
   return (
@@ -23,6 +27,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/workflow" element={<Workflow />} />
           <Route path="/workflow/:stepId" element={<WorkflowStep />} />
+          <Route path="/sdd" element={<SDD />} />
+          <Route path="/sdd/concepts" element={<SDDConcepts />} />
+          <Route path="/sdd/comparison" element={<SDDComparison />} />
+          <Route path="/sdd/benefits" element={<SDDBenefits />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AppLayout>
