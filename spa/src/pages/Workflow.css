@@ -1,0 +1,59 @@
+.workflow-page {
+  padding-bottom: var(--spacing-2xl);
+}
+
+.workflow-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.workflow-header h1 {
+  margin-bottom: var(--spacing-md);
+}
+
+.workflow-intro {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.workflow-steps {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.workflow-overview {
+  margin-top: var(--spacing-2xl);
+}
+
+.workflow-overview h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.flow-diagram-placeholder {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-diagram-placeholder p {
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}

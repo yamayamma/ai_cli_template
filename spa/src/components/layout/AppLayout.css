@@ -1,0 +1,23 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: var(--header-height);
+}
+
+.footer {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 0.875rem;
+}

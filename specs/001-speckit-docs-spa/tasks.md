@@ -67,27 +67,27 @@
 
 ### Tests for User Story 1
 
-- [ ] T017 [P] [US1] E2E test for workflow navigation in spa/tests/e2e/workflow.spec.ts
-- [ ] T018 [P] [US1] Unit test for Workflow page in spa/tests/unit/pages/Workflow.test.tsx
-- [ ] T019 [P] [US1] Unit test for WorkflowStep page in spa/tests/unit/pages/WorkflowStep.test.tsx
+- [X] T017 [P] [US1] E2E test for workflow navigation in spa/tests/e2e/workflow.spec.ts
+- [X] T018 [P] [US1] Unit test for Workflow page in spa/tests/unit/pages/Workflow.test.tsx
+- [X] T019 [P] [US1] Unit test for WorkflowStep page in spa/tests/unit/pages/WorkflowStep.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T020 [P] [US1] Create AppLayout component in spa/src/components/layout/AppLayout.tsx
-- [ ] T021 [P] [US1] Create Navigation component in spa/src/components/layout/Navigation.tsx
-- [ ] T022 [P] [US1] Create Breadcrumbs component in spa/src/components/layout/Breadcrumbs.tsx
-- [ ] T023 [P] [US1] Create StepCard component in spa/src/components/ui/StepCard.tsx
-- [ ] T024 [US1] Create Workflow page in spa/src/pages/Workflow.tsx
-- [ ] T025 [US1] Create WorkflowStep page in spa/src/pages/WorkflowStep.tsx
-- [ ] T026 [P] [US1] Create workflow index MDX in spa/src/content/workflow/index.mdx
-- [ ] T027 [P] [US1] Create specify step MDX in spa/src/content/workflow/specify.mdx
-- [ ] T028 [P] [US1] Create clarify step MDX in spa/src/content/workflow/clarify.mdx
-- [ ] T029 [P] [US1] Create plan step MDX in spa/src/content/workflow/plan.mdx
-- [ ] T030 [P] [US1] Create execute step MDX in spa/src/content/workflow/execute.mdx
-- [ ] T031 [P] [US1] Create verify step MDX in spa/src/content/workflow/verify.mdx
-- [ ] T032 [US1] Add step navigation (prev/next) in spa/src/pages/WorkflowStep.tsx
-- [ ] T033 [US1] Create Home page with learning path in spa/src/pages/Home.tsx
-- [ ] T034 [P] [US1] Create home MDX content in spa/src/content/home.mdx
+- [X] T020 [P] [US1] Create AppLayout component in spa/src/components/layout/AppLayout.tsx
+- [X] T021 [P] [US1] Create Navigation component in spa/src/components/layout/Navigation.tsx
+- [X] T022 [P] [US1] Create Breadcrumbs component in spa/src/components/layout/Breadcrumbs.tsx
+- [X] T023 [P] [US1] Create StepCard component in spa/src/components/ui/StepCard.tsx
+- [X] T024 [US1] Create Workflow page in spa/src/pages/Workflow.tsx
+- [X] T025 [US1] Create WorkflowStep page in spa/src/pages/WorkflowStep.tsx
+- [X] T026 [P] [US1] Create workflow index MDX in spa/src/content/workflow/index.mdx
+- [X] T027 [P] [US1] Create specify step MDX in spa/src/content/workflow/specify.mdx
+- [X] T028 [P] [US1] Create clarify step MDX in spa/src/content/workflow/clarify.mdx
+- [X] T029 [P] [US1] Create plan step MDX in spa/src/content/workflow/plan.mdx
+- [X] T030 [P] [US1] Create execute step MDX in spa/src/content/workflow/execute.mdx
+- [X] T031 [P] [US1] Create verify step MDX in spa/src/content/workflow/verify.mdx
+- [X] T032 [US1] Add step navigation (prev/next) in spa/src/pages/WorkflowStep.tsx
+- [X] T033 [US1] Create Home page with learning path in spa/src/pages/Home.tsx
+- [X] T034 [P] [US1] Create home MDX content in spa/src/content/home.mdx
 
 **Checkpoint**: User Story 1完了 - 開発フローを独立してテスト可能
 
