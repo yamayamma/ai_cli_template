@@ -46,14 +46,14 @@
 
 **⚠️ CRITICAL**: このフェーズが完了するまで、ユーザーストーリーの作業は開始できません
 
-- [ ] T009 Create TypeScript type definitions in spa/src/types/index.ts
-- [ ] T010 [P] Create Section data in spa/src/data/sections.ts
-- [ ] T011 [P] Create Step data in spa/src/data/steps.ts
-- [ ] T012 [P] Create Command data in spa/src/data/commands.ts
-- [ ] T013 [P] Create Comparison data in spa/src/data/comparisons.ts
-- [ ] T014 Configure HashRouter and routes in spa/src/App.tsx
-- [ ] T015 Create base CSS with CSS variables in spa/src/index.css
-- [ ] T016 Setup main entry point in spa/src/main.tsx
+- [X] T009 Create TypeScript type definitions in spa/src/types/index.ts
+- [X] T010 [P] Create Section data in spa/src/data/sections.ts
+- [X] T011 [P] Create Step data in spa/src/data/steps.ts
+- [X] T012 [P] Create Command data in spa/src/data/commands.ts
+- [X] T013 [P] Create Comparison data in spa/src/data/comparisons.ts
+- [X] T014 Configure HashRouter and routes in spa/src/App.tsx
+- [X] T015 Create base CSS with CSS variables in spa/src/index.css
+- [X] T016 Setup main entry point in spa/src/main.tsx
 
 **Checkpoint**: 基盤完了 - ユーザーストーリーの実装を並行して開始可能
 
