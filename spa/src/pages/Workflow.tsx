@@ -1,8 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { steps } from '../data/steps'
 import StepCard from '../components/ui/StepCard'
+import { FlowDiagram } from '../components/interactive/FlowDiagram'
 import './Workflow.css'
 
 export default function Workflow() {
+  const navigate = useNavigate();
+
+  const handleNodeClick = (nodeId: string) => {
+    // Extract step number from node ID (e.g., 'step-1' -> 'step1')
+    const stepId = nodeId.replace('-', '');
+    navigate(`/workflow/${stepId}`);
+  };
+
   return (
     <div className="page workflow-page">
       <div className="container">
@@ -24,9 +34,15 @@ export default function Workflow() {
         
         <section className="workflow-overview">
           <h2>フローの概要</h2>
-          <div className="flow-diagram-placeholder">
-            <p>インタラクティブなフロー図がここに表示されます</p>
-          </div>
+          <p className="section-description">
+            各ステップをクリックすると詳細ページに移動します。
+          </p>
+          <FlowDiagram
+            variant="workflow"
+            showControls
+            onNodeClick={handleNodeClick}
+            className="large"
+          />
         </section>
       </div>
     </div>

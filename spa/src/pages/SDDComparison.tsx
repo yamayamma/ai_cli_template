@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { comparison, methodologies } from '../data/comparisons'
+import { ComparisonChart } from '../components/interactive/ComparisonChart'
 import './SDDComparison.css'
 
 export default function SDDComparison() {
@@ -12,6 +13,14 @@ export default function SDDComparison() {
             SDDと他の開発手法を比較して、それぞれの特徴を理解しましょう。
           </p>
         </header>
+
+        <section className="interactive-chart-section">
+          <h2>インタラクティブ比較</h2>
+          <p className="section-description">
+            バーにホバーすると詳細な説明が表示されます。
+          </p>
+          <ComparisonChart />
+        </section>
         
         <section className="methodologies-section">
           <h2>開発手法の概要</h2>

@@ -14,6 +14,23 @@
   font-size: 1.125rem;
 }
 
+/* Interactive Chart Section */
+.interactive-chart-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.interactive-chart-section h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+}
+
 /* Methodologies Section */
 .methodologies-section {
   margin-bottom: var(--spacing-2xl);

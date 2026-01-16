@@ -34,22 +34,14 @@
 
 .workflow-overview h2 {
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
 }
 
-.flow-diagram-placeholder {
-  background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-2xl);
+.section-description {
   text-align: center;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flow-diagram-placeholder p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 768px) {

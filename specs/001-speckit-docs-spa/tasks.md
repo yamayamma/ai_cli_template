@@ -128,18 +128,18 @@
 
 ### Tests for User Story 5
 
-- [ ] T046 [P] [US5] Unit test for FlowDiagram in spa/tests/unit/components/FlowDiagram.test.tsx
-- [ ] T047 [P] [US5] Unit test for ComparisonChart in spa/tests/unit/components/ComparisonChart.test.tsx
-- [ ] T048 [P] [US5] E2E test for interactive diagrams in spa/tests/e2e/diagrams.spec.ts
+- [X] T046 [P] [US5] Unit test for FlowDiagram in spa/tests/unit/components/FlowDiagram.test.tsx
+- [X] T047 [P] [US5] Unit test for ComparisonChart in spa/tests/unit/components/ComparisonChart.test.tsx
+- [X] T048 [P] [US5] E2E test for interactive diagrams in spa/tests/e2e/diagrams.spec.ts
 
 ### Implementation for User Story 5
 
-- [ ] T049 [P] [US5] Create Tooltip component in spa/src/components/ui/Tooltip.tsx
-- [ ] T050 [P] [US5] Create Modal component in spa/src/components/ui/Modal.tsx
-- [ ] T051 [US5] Create FlowDiagram component with React Flow in spa/src/components/interactive/FlowDiagram.tsx
-- [ ] T052 [US5] Create ComparisonChart component in spa/src/components/interactive/ComparisonChart.tsx
-- [ ] T053 [US5] Integrate FlowDiagram into Workflow page in spa/src/pages/Workflow.tsx
-- [ ] T054 [US5] Integrate ComparisonChart into SDDComparison page in spa/src/pages/SDDComparison.tsx
+- [X] T049 [P] [US5] Create Tooltip component in spa/src/components/ui/Tooltip.tsx
+- [X] T050 [P] [US5] Create Modal component in spa/src/components/ui/Modal.tsx
+- [X] T051 [US5] Create FlowDiagram component with React Flow in spa/src/components/interactive/FlowDiagram.tsx
+- [X] T052 [US5] Create ComparisonChart component in spa/src/components/interactive/ComparisonChart.tsx
+- [X] T053 [US5] Integrate FlowDiagram into Workflow page in spa/src/pages/Workflow.tsx
+- [X] T054 [US5] Integrate ComparisonChart into SDDComparison page in spa/src/pages/SDDComparison.tsx
 
 **Checkpoint**: User Story 5完了 - インタラクティブ図表を独立してテスト可能
 
