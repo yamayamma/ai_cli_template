@@ -21,3 +21,23 @@
   margin: 0;
   font-size: 0.875rem;
 }
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .main-content {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+  
+  .footer {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}

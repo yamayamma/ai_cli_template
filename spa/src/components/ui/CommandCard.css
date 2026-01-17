@@ -73,3 +73,32 @@
 .command-step.step-3 { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; }
 .command-step.step-4 { background-color: rgba(217, 70, 239, 0.2); color: #e879f9; }
 .command-step.step-5 { background-color: rgba(236, 72, 153, 0.2); color: #f472b6; }
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  .command-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .command-card:active {
+    transform: scale(0.98);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .command-card {
+    padding: var(--spacing-md);
+  }
+  
+  .command-name {
+    font-size: 1rem;
+  }
+  
+  .command-description {
+    font-size: 0.875rem;
+  }
+}

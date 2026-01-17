@@ -96,3 +96,28 @@
 .step-card--compact .step-card__title {
   font-size: 0.75rem;
 }
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  .step-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .step-card:active {
+    border-color: var(--step-color);
+    transform: scale(0.98);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .step-card {
+    padding: var(--spacing-md);
+  }
+  
+  .step-card__name {
+    font-size: 1.125rem;
+  }
+}

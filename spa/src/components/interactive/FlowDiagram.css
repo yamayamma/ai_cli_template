@@ -102,3 +102,53 @@
 .react-flow__attribution {
   display: none;
 }
+
+/* Mobile/Touch optimizations */
+@media (max-width: 768px) {
+  .flow-diagram-container {
+    height: 300px;
+    touch-action: pan-x pan-y;
+  }
+  
+  .flow-diagram-container.large {
+    height: 350px;
+  }
+  
+  .custom-node {
+    padding: 0.5rem 0.75rem;
+    min-width: 100px;
+    font-size: 0.75rem;
+  }
+  
+  .node-description {
+    font-size: 0.625rem;
+  }
+  
+  .react-flow__controls {
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .react-flow__controls-button {
+    padding: 8px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  
+  .react-flow__minimap {
+    display: none;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  .custom-node:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .custom-node:active {
+    border-color: var(--color-primary, #4A90D9);
+    transform: scale(0.98);
+  }
+}

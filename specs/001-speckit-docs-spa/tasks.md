@@ -183,16 +183,16 @@
 
 ### Tests for User Story 4
 
-- [ ] T069 [P] [US4] E2E test for responsive layout in spa/tests/e2e/responsive.spec.ts
-- [ ] T070 [P] [US4] Unit test for mobile navigation in spa/tests/unit/components/Navigation.test.tsx
+- [X] T069 [P] [US4] E2E test for responsive layout in spa/tests/e2e/responsive.spec.ts
+- [X] T070 [P] [US4] Unit test for mobile navigation in spa/tests/unit/components/Navigation.test.tsx
 
 ### Implementation for User Story 4
 
-- [ ] T071 [US4] Add responsive styles to Navigation in spa/src/components/layout/Navigation.tsx
-- [ ] T072 [US4] Implement hamburger menu for mobile in spa/src/components/layout/Navigation.tsx
-- [ ] T073 [US4] Add responsive breakpoints to AppLayout in spa/src/components/layout/AppLayout.tsx
-- [ ] T074 [US4] Update all pages for responsive design in spa/src/pages/*.tsx
-- [ ] T075 [US4] Add touch-friendly interactions for mobile in spa/src/components/interactive/*.tsx
+- [X] T071 [US4] Add responsive styles to Navigation in spa/src/components/layout/Navigation.tsx
+- [X] T072 [US4] Implement hamburger menu for mobile in spa/src/components/layout/Navigation.tsx
+- [X] T073 [US4] Add responsive breakpoints to AppLayout in spa/src/components/layout/AppLayout.tsx
+- [X] T074 [US4] Update all pages for responsive design in spa/src/pages/*.tsx
+- [X] T075 [US4] Add touch-friendly interactions for mobile in spa/src/components/interactive/*.tsx
 
 **Checkpoint**: User Story 4完了 - レスポンシブデザインを全デバイスでテスト可能
 
