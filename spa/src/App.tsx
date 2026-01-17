@@ -9,17 +9,7 @@ import SDDComparison from './pages/SDDComparison'
 import SDDBenefits from './pages/SDDBenefits'
 import Commands from './pages/Commands'
 import CommandDetail from './pages/CommandDetail'
-
-function NotFound() {
-  return (
-    <div className="page">
-      <div className="container" style={{ textAlign: 'center', paddingTop: '4rem' }}>
-        <h1>404 - ページが見つかりません</h1>
-        <p>お探しのページは存在しないか、移動した可能性があります。</p>
-      </div>
-    </div>
-  )
-}
+import NotFound from './pages/NotFound'
 
 function App() {
   return (

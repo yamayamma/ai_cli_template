@@ -202,15 +202,15 @@
 
 **Purpose**: 複数のユーザーストーリーに影響する改善
 
-- [ ] T076 Create NotFound (404) page in spa/src/pages/NotFound.tsx
-- [ ] T077 [P] Configure vite-plugin-pwa in spa/vite.config.ts
-- [ ] T078 [P] Create PWA manifest and icons in spa/public/
-- [ ] T079 Create Service Worker configuration for offline cache in spa/vite.config.ts
-- [ ] T080 [P] Create GitHub Actions deploy workflow in .github/workflows/deploy-spa.yml
-- [ ] T081 [P] Add Lighthouse CI check to workflow in .github/workflows/deploy-spa.yml
-- [ ] T082 Run final E2E test suite for all user stories
-- [ ] T083 Validate quickstart.md instructions are accurate
-- [ ] T084 Update README with SPA documentation
+- [X] T076 Create NotFound (404) page in spa/src/pages/NotFound.tsx
+- [X] T077 [P] Configure vite-plugin-pwa in spa/vite.config.ts
+- [X] T078 [P] Create PWA manifest and icons in spa/public/
+- [X] T079 Create Service Worker configuration for offline cache in spa/vite.config.ts
+- [X] T080 [P] Create GitHub Actions deploy workflow in .github/workflows/deploy-spa.yml
+- [X] T081 [P] Add Lighthouse CI check to workflow in .github/workflows/deploy-spa.yml
+- [X] T082 Run final E2E test suite for all user stories
+- [X] T083 Validate quickstart.md instructions are accurate
+- [X] T084 Update README with SPA documentation
 
 ---
 

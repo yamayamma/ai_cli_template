@@ -100,6 +100,26 @@ pnpm docs:generate
 
 出力先: [docs/api/index.html](docs/api/index.html)
 
+### SpecKit Documentation SPA
+
+インタラクティブなドキュメンテーションSPAが利用可能です：
+
+- **📍 URL**: [https://ai-boost.github.io/ai_cli_template/](https://ai-boost.github.io/ai_cli_template/)
+- **💻 ローカル実行**:
+  ```bash
+  cd spa
+  pnpm install
+  pnpm dev
+  ```
+- **📱 PWA対応**: オフラインでの閲覧をサポート
+- **🎨 ダークモード**: 美しいダークテーマUI
+
+#### SPA機能
+- **開発フロー**: 5ステップワークフロー（specify, clarify, plan, execute, verify）のインタラクティブガイド
+- **SDD解説**: Spec Driven Developmentの概念と他手法との比較
+- **コマンドリファレンス**: 全CLIコマンドの詳細ドキュメント
+- **レスポンシブデザイン**: モバイル・タブレット・デスクトップ対応
+
 ### プロジェクトドキュメント
 
 - **[Constitution](.specify/memory/constitution.md)** - プロジェクト原則と基準
