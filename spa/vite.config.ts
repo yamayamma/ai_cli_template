@@ -1,13 +1,21 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import mdx from '@mdx-js/rollup'
-import remarkGfm from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight'
-import { VitePWA } from 'vite-plugin-pwa'
+import mdx from '@mdx-js/rollup';
+import react from '@vitejs/plugin-react';
+import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
 export default defineConfig({
   base: '/ai_cli_template/',
+  server: {
+    host: true, // 0.0.0.0でリッスン（コンテナ外部からアクセス可能に）
+    port: 5173,
+  },
+  preview: {
+    host: true,
+    port: 4173,
+  },
   plugins: [
     mdx({
       remarkPlugins: [remarkGfm],
@@ -75,4 +83,4 @@ export default defineConfig({
       },
     }),
   ],
-})
+});
