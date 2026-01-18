@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
-import { comparison, methodologies } from '../data/comparisons'
-import { ComparisonChart } from '../components/interactive/ComparisonChart'
-import './SDDComparison.css'
+import { Link } from 'react-router-dom';
+import { ComparisonChart } from '../components/interactive/ComparisonChart';
+import { comparison, methodologies } from '../data/comparisons';
+import './SDDComparison.css';
 
 export default function SDDComparison() {
   return (
@@ -16,29 +16,29 @@ export default function SDDComparison() {
 
         <section className="interactive-chart-section">
           <h2>インタラクティブ比較</h2>
-          <p className="section-description">
-            バーにホバーすると詳細な説明が表示されます。
-          </p>
+          <p className="section-description">バーにホバーすると詳細な説明が表示されます。</p>
           <ComparisonChart />
         </section>
-        
+
         <section className="methodologies-section">
           <h2>開発手法の概要</h2>
           <div className="methodology-cards">
-            {methodologies.map(method => (
+            {methodologies.map((method) => (
               <div key={method.id} className="methodology-card">
                 <h3>{method.name}</h3>
                 <p>{method.description}</p>
                 <div className="method-tags">
                   {method.bestFor.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="tag">{tag}</span>
+                    <span key={i} className="tag">
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
             ))}
           </div>
         </section>
-        
+
         <section className="comparison-table-section">
           <h2>比較表</h2>
           <div className="table-wrapper">
@@ -46,16 +46,16 @@ export default function SDDComparison() {
               <thead>
                 <tr>
                   <th>比較軸</th>
-                  {methodologies.map(m => (
+                  {methodologies.map((m) => (
                     <th key={m.id}>{m.name}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {comparison.dimensions.map(dim => (
+                {comparison.dimensions.map((dim) => (
                   <tr key={dim.name}>
                     <td className="dimension-name">{dim.name}</td>
-                    {methodologies.map(m => (
+                    {methodologies.map((m) => (
                       <td key={m.id}>{dim.values[m.id]}</td>
                     ))}
                   </tr>
@@ -64,11 +64,11 @@ export default function SDDComparison() {
             </table>
           </div>
         </section>
-        
+
         <section className="pros-cons-section">
           <h2>メリット・デメリット</h2>
           <div className="pros-cons-grid">
-            {methodologies.map(method => (
+            {methodologies.map((method) => (
               <div key={method.id} className="pros-cons-card">
                 <h3>{method.name}</h3>
                 <div className="pros">
@@ -91,7 +91,7 @@ export default function SDDComparison() {
             ))}
           </div>
         </section>
-        
+
         <nav className="page-nav">
           <Link to="/sdd/concepts" className="nav-link">
             ← 基本概念
@@ -102,5 +102,5 @@ export default function SDDComparison() {
         </nav>
       </div>
     </div>
-  )
+  );
 }

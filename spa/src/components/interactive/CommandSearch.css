@@ -101,12 +101,12 @@
   .command-search {
     max-width: 100%;
   }
-  
+
   .command-search-input {
     padding: 1rem 1rem 1rem 2.75rem;
     font-size: 16px; /* Prevents iOS zoom */
   }
-  
+
   .command-filters {
     gap: var(--spacing-xs);
   }
@@ -119,13 +119,13 @@
     height: 44px;
     right: 0.25rem;
   }
-  
+
   .filter-button {
     min-height: 44px;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
-  
+
   .filter-button:active {
     transform: scale(0.97);
   }

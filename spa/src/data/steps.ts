@@ -1,4 +1,4 @@
-import type { Step } from '../types'
+import type { Step } from '../types';
 
 export const steps: Step[] = [
   {
@@ -104,12 +104,12 @@ export const steps: Step[] = [
     relatedCommands: ['verify'],
     previousStep: 'execute',
   },
-]
+];
 
 export function getStepById(id: string): Step | undefined {
-  return steps.find((step) => step.id === id)
+  return steps.find((step) => step.id === id);
 }
 
 export function getStepByOrder(order: number): Step | undefined {
-  return steps.find((step) => step.order === order)
+  return steps.find((step) => step.order === order);
 }

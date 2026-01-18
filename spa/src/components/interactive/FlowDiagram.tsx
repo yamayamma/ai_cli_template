@@ -1,17 +1,17 @@
-import { useCallback, useMemo } from 'react';
 import {
-  ReactFlow,
   Background,
   Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-  type Node,
   type Edge,
-  type NodeTypes,
   Handle,
+  MiniMap,
+  type Node,
+  type NodeTypes,
   Position,
+  ReactFlow,
+  useEdgesState,
+  useNodesState,
 } from '@xyflow/react';
+import { useCallback, useMemo } from 'react';
 import '@xyflow/react/dist/style.css';
 import './FlowDiagram.css';
 

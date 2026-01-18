@@ -1,13 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Navigation from '../../../src/components/layout/Navigation';
 
 // Mock window.matchMedia
 const mockMatchMedia = (matches: boolean) => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: vi.fn().mockImplementation(query => ({
+    value: vi.fn().mockImplementation((query) => ({
       matches,
       media: query,
       onchange: null,
@@ -31,7 +31,7 @@ describe('Navigation - Mobile', () => {
         <Navigation currentPath="/" />
       </MemoryRouter>
     );
-    
+
     // Should have nav-toggle button (hamburger menu)
     const menuToggle = container.querySelector('.nav-toggle');
     expect(menuToggle).toBeInTheDocument();
@@ -43,13 +43,13 @@ describe('Navigation - Mobile', () => {
         <Navigation currentPath="/" />
       </MemoryRouter>
     );
-    
+
     const menuButton = container.querySelector('.nav-toggle');
     expect(menuButton).toBeInTheDocument();
-    
+
     // Click to open menu
     fireEvent.click(menuButton!);
-    
+
     // Menu should have is-open class
     const menu = container.querySelector('.nav-menu.is-open');
     expect(menu).toBeInTheDocument();
@@ -61,17 +61,17 @@ describe('Navigation - Mobile', () => {
         <Navigation currentPath="/" />
       </MemoryRouter>
     );
-    
+
     const menuButton = container.querySelector('.nav-toggle');
     fireEvent.click(menuButton!);
-    
+
     // Menu should be open
     expect(container.querySelector('.nav-menu.is-open')).toBeInTheDocument();
-    
+
     // Click a nav link
     const link = container.querySelector('.nav-link');
     fireEvent.click(link!);
-    
+
     // Menu should close (no longer has is-open class)
     expect(container.querySelector('.nav-menu.is-open')).not.toBeInTheDocument();
   });
@@ -88,7 +88,7 @@ describe('Navigation - Desktop', () => {
         <Navigation currentPath="/" />
       </MemoryRouter>
     );
-    
+
     // Should show nav links - section title from data is "開発フロー"
     expect(screen.getByText('開発フロー')).toBeInTheDocument();
   });
@@ -99,7 +99,7 @@ describe('Navigation - Desktop', () => {
         <Navigation currentPath="/sdd" />
       </MemoryRouter>
     );
-    
+
     expect(screen.getByText('Spec Driven Development')).toBeInTheDocument();
     expect(screen.getByText('コマンドリファレンス')).toBeInTheDocument();
   });

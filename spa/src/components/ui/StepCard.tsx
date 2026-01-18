@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
-import type { Step } from '../../types'
-import './StepCard.css'
+import { Link } from 'react-router-dom';
+import type { Step } from '../../types';
+import './StepCard.css';
 
 interface StepCardProps {
-  step: Step
-  compact?: boolean
+  step: Step;
+  compact?: boolean;
 }
 
 export default function StepCard({ step, compact = false }: StepCardProps) {
   return (
-    <Link 
-      to={`/workflow/${step.id}`} 
+    <Link
+      to={`/workflow/${step.id}`}
       className={`step-card ${compact ? 'step-card--compact' : ''}`}
       style={{ '--step-color': step.color } as React.CSSProperties}
     >
@@ -20,9 +20,7 @@ export default function StepCard({ step, compact = false }: StepCardProps) {
       </div>
       <h3 className="step-card__name">{step.name}</h3>
       <p className="step-card__title">{step.title}</p>
-      {!compact && (
-        <p className="step-card__description">{step.shortDescription}</p>
-      )}
+      {!compact && <p className="step-card__description">{step.shortDescription}</p>}
     </Link>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import type { Comparison, Methodology } from '../types'
+import type { Comparison, Methodology } from '../types';
 
 export const methodologies: Methodology[] = [
   {
@@ -12,16 +12,8 @@ export const methodologies: Methodology[] = [
       'テスト駆動で品質担保',
       'ドキュメントと実装の一貫性',
     ],
-    cons: [
-      '初期学習コストがある',
-      'AI依存のリスク',
-      '小規模プロジェクトではオーバーヘッド',
-    ],
-    bestFor: [
-      '中〜大規模プロジェクト',
-      'AIを活用した開発',
-      '品質重視のプロジェクト',
-    ],
+    cons: ['初期学習コストがある', 'AI依存のリスク', '小規模プロジェクトではオーバーヘッド'],
+    bestFor: ['中〜大規模プロジェクト', 'AIを活用した開発', '品質重視のプロジェクト'],
   },
   {
     id: 'agile',
@@ -35,13 +27,12 @@ export const methodologies: Methodology[] = [
   {
     id: 'waterfall',
     name: 'ウォーターフォール',
-    description:
-      '要件定義→設計→実装→テストの順に進む伝統的な手法。各フェーズを完了してから次へ。',
+    description: '要件定義→設計→実装→テストの順に進む伝統的な手法。各フェーズを完了してから次へ。',
     pros: ['明確なマイルストーン', 'ドキュメントが充実', '進捗管理が容易'],
     cons: ['変更に弱い', '後戻りコストが高い', '顧客フィードバックが遅い'],
     bestFor: ['要件が明確なプロジェクト', '規制産業', '大規模なエンタープライズ'],
   },
-]
+];
 
 export const comparison: Comparison = {
   id: 'development-methodologies',
@@ -88,8 +79,8 @@ export const comparison: Comparison = {
       },
     },
   ],
-}
+};
 
 export function getMethodologyById(id: string): Methodology | undefined {
-  return methodologies.find((m) => m.id === id)
+  return methodologies.find((m) => m.id === id);
 }

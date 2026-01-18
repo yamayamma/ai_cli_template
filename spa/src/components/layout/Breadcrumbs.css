@@ -48,7 +48,7 @@
   .breadcrumbs {
     padding: var(--spacing-sm) var(--spacing-lg);
   }
-  
+
   .breadcrumb-link,
   .breadcrumb-separator,
   .breadcrumb-current {

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import './SDDConcepts.css'
+import { Link } from 'react-router-dom';
+import './SDDConcepts.css';
 
 export default function SDDConcepts() {
   return (
@@ -11,20 +11,18 @@ export default function SDDConcepts() {
             Spec Driven Developmentの核となる考え方を理解しましょう。
           </p>
         </header>
-        
+
         <section className="concept-section">
           <h2>仕様駆動とは</h2>
           <p>
             仕様駆動（Specification-Driven）とは、開発プロセスの起点を
-            仕様書に置くアプローチです。コードを書く前に、何を作るかを
-            明確に定義します。
+            仕様書に置くアプローチです。コードを書く前に、何を作るかを 明確に定義します。
           </p>
           <div className="concept-highlight">
-            <strong>ポイント:</strong> 「何を作るか」を先に決め、
-            「どう作るか」は後から考える
+            <strong>ポイント:</strong> 「何を作るか」を先に決め、 「どう作るか」は後から考える
           </div>
         </section>
-        
+
         <section className="concept-section">
           <h2>AIとの協調</h2>
           <p>
@@ -40,7 +38,7 @@ export default function SDDConcepts() {
             <li>テストケースの自動生成</li>
           </ul>
         </section>
-        
+
         <section className="concept-section">
           <h2>テスト駆動開発（TDD）</h2>
           <p>
@@ -66,7 +64,7 @@ export default function SDDConcepts() {
             </div>
           </div>
         </section>
-        
+
         <nav className="page-nav">
           <Link to="/sdd" className="nav-link">
             ← SDDトップへ
@@ -77,5 +75,5 @@ export default function SDDConcepts() {
         </nav>
       </div>
     </div>
-  )
+  );
 }

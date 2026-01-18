@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
-import { commands, getCategories, filterCommands } from '../data/commands';
-import { CommandCard } from '../components/ui/CommandCard';
+import { useMemo, useState } from 'react';
 import { CommandSearch } from '../components/interactive/CommandSearch';
+import { CommandCard } from '../components/ui/CommandCard';
+import { commands, filterCommands, getCategories } from '../data/commands';
 import './Commands.css';
 
 export default function Commands() {
@@ -12,15 +12,15 @@ export default function Commands() {
 
   const filteredCommands = useMemo(() => {
     let result = commands;
-    
+
     if (searchQuery) {
       result = filterCommands(searchQuery);
     }
-    
+
     if (activeCategory) {
-      result = result.filter(cmd => cmd.category === activeCategory);
+      result = result.filter((cmd) => cmd.category === activeCategory);
     }
-    
+
     return result;
   }, [searchQuery, activeCategory]);
 
@@ -53,11 +53,9 @@ export default function Commands() {
 
         {filteredCommands.length > 0 ? (
           <>
-            <p className="results-count">
-              {filteredCommands.length}件のコマンドが見つかりました
-            </p>
+            <p className="results-count">{filteredCommands.length}件のコマンドが見つかりました</p>
             <div className="commands-grid">
-              {filteredCommands.map(command => (
+              {filteredCommands.map((command) => (
                 <CommandCard key={command.id} command={command} />
               ))}
             </div>

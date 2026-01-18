@@ -97,11 +97,11 @@
   .not-found-page h1 {
     font-size: 4rem;
   }
-  
+
   .not-found-page h2 {
     font-size: 1.25rem;
   }
-  
+
   .not-found-content {
     padding: var(--spacing-lg);
   }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './CommandSearch.css';
 
 export interface CommandSearchProps {
@@ -83,7 +83,7 @@ export function CommandSearch({
           </button>
         )}
       </div>
-      
+
       {categories && categories.length > 0 && (
         <div className="command-filters">
           {categories.map((category) => (
@@ -98,10 +98,8 @@ export function CommandSearch({
           ))}
         </div>
       )}
-      
-      <p className="command-search-hint">
-        コマンド名、説明、またはカテゴリで検索できます
-      </p>
+
+      <p className="command-search-hint">コマンド名、説明、またはカテゴリで検索できます</p>
     </div>
   );
 }

@@ -1,15 +1,15 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
-import AppLayout from './components/layout/AppLayout'
-import Home from './pages/Home'
-import Workflow from './pages/Workflow'
-import WorkflowStep from './pages/WorkflowStep'
-import SDD from './pages/SDD'
-import SDDConcepts from './pages/SDDConcepts'
-import SDDComparison from './pages/SDDComparison'
-import SDDBenefits from './pages/SDDBenefits'
-import Commands from './pages/Commands'
-import CommandDetail from './pages/CommandDetail'
-import NotFound from './pages/NotFound'
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import AppLayout from './components/layout/AppLayout';
+import CommandDetail from './pages/CommandDetail';
+import Commands from './pages/Commands';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import SDD from './pages/SDD';
+import SDDBenefits from './pages/SDDBenefits';
+import SDDComparison from './pages/SDDComparison';
+import SDDConcepts from './pages/SDDConcepts';
+import Workflow from './pages/Workflow';
+import WorkflowStep from './pages/WorkflowStep';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         </Routes>
       </AppLayout>
     </HashRouter>
-  )
+  );
 }
 
-export default App
+export default App;

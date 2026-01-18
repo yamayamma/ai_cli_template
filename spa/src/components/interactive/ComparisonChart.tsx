@@ -99,7 +99,7 @@ export function ComparisonChart({
   return (
     <div className={`comparison-chart ${className}`} role="region" aria-label="比較チャート">
       {title && <h3 className="comparison-chart-title">{title}</h3>}
-      
+
       <div className="comparison-rows">
         {comparisonData.map((item) => (
           <div key={item.category} className="comparison-row">

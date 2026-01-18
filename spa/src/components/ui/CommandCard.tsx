@@ -16,9 +16,7 @@ export function CommandCard({ command }: CommandCardProps) {
       <p className="command-description">{command.description}</p>
       <div className="command-meta">
         <span className="command-category">{command.category}</span>
-        <span className={`command-step step-${command.step}`}>
-          Step {command.step}
-        </span>
+        <span className={`command-step step-${command.step}`}>Step {command.step}</span>
       </div>
     </Link>
   );

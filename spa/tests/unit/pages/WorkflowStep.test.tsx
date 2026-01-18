@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { describe, expect, it } from 'vitest';
 
 // This will be replaced with actual import once component exists
 const WorkflowStep = ({ stepId }: { stepId: string }) => (
@@ -8,7 +8,7 @@ const WorkflowStep = ({ stepId }: { stepId: string }) => (
     <h1>{stepId}</h1>
     <p>Step description</p>
   </div>
-)
+);
 
 describe('WorkflowStep Page', () => {
   it('should render step heading', () => {
@@ -16,18 +16,18 @@ describe('WorkflowStep Page', () => {
       <MemoryRouter>
         <WorkflowStep stepId="specify" />
       </MemoryRouter>
-    )
-    
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('specify')
-  })
+    );
+
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('specify');
+  });
 
   it('should display step content', () => {
     render(
       <MemoryRouter>
         <WorkflowStep stepId="clarify" />
       </MemoryRouter>
-    )
-    
-    expect(screen.getByText(/Step description/)).toBeInTheDocument()
-  })
-})
+    );
+
+    expect(screen.getByText(/Step description/)).toBeInTheDocument();
+  });
+});

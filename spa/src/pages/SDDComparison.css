@@ -157,17 +157,20 @@
   margin-bottom: var(--spacing-sm);
 }
 
-.pros, .cons {
+.pros,
+.cons {
   margin-bottom: var(--spacing-md);
 }
 
-.pros ul, .cons ul {
+.pros ul,
+.cons ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.pros li, .cons li {
+.pros li,
+.cons li {
   padding: var(--spacing-xs) 0;
   font-size: 0.875rem;
   color: var(--text-secondary);
@@ -176,14 +179,14 @@
 }
 
 .pros li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--color-success);
 }
 
 .cons li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--color-warning);
@@ -208,11 +211,11 @@
   .pros-cons-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .comparison-table {
     font-size: 0.875rem;
   }
-  
+
   .comparison-table th,
   .comparison-table td {
     padding: var(--spacing-sm);

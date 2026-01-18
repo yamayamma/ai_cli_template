@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import './NotFound.css'
+import { Link } from 'react-router-dom';
+import './NotFound.css';
 
 export default function NotFound() {
   return (
@@ -11,7 +11,7 @@ export default function NotFound() {
         <p className="not-found-description">
           お探しのページは存在しないか、移動した可能性があります。
         </p>
-        
+
         <div className="not-found-suggestions">
           <h3>お探しの内容は？</h3>
           <ul className="suggestions-list">
@@ -35,11 +35,11 @@ export default function NotFound() {
             </li>
           </ul>
         </div>
-        
+
         <Link to="/" className="btn btn-primary not-found-home">
           ホームに戻る
         </Link>
       </div>
     </div>
-  )
+  );
 }

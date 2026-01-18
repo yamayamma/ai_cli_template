@@ -27,28 +27,46 @@
 }
 
 .custom-node:hover {
-  border-color: var(--color-primary, #4A90D9);
+  border-color: var(--color-primary, #4a90d9);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(74, 144, 217, 0.2);
 }
 
 .custom-node.selected {
-  border-color: var(--color-primary, #4A90D9);
+  border-color: var(--color-primary, #4a90d9);
   box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.3);
 }
 
 /* Step color variants */
-.custom-node.step-1 { border-left: 4px solid #6366f1; }
-.custom-node.step-2 { border-left: 4px solid #8b5cf6; }
-.custom-node.step-3 { border-left: 4px solid #a855f7; }
-.custom-node.step-4 { border-left: 4px solid #d946ef; }
-.custom-node.step-5 { border-left: 4px solid #ec4899; }
+.custom-node.step-1 {
+  border-left: 4px solid #6366f1;
+}
+.custom-node.step-2 {
+  border-left: 4px solid #8b5cf6;
+}
+.custom-node.step-3 {
+  border-left: 4px solid #a855f7;
+}
+.custom-node.step-4 {
+  border-left: 4px solid #d946ef;
+}
+.custom-node.step-5 {
+  border-left: 4px solid #ec4899;
+}
 
 /* SDD cycle colors */
-.custom-node.sdd-spec { border-left: 4px solid #22c55e; }
-.custom-node.sdd-test { border-left: 4px solid #eab308; }
-.custom-node.sdd-impl { border-left: 4px solid #3b82f6; }
-.custom-node.sdd-refactor { border-left: 4px solid #f97316; }
+.custom-node.sdd-spec {
+  border-left: 4px solid #22c55e;
+}
+.custom-node.sdd-test {
+  border-left: 4px solid #eab308;
+}
+.custom-node.sdd-impl {
+  border-left: 4px solid #3b82f6;
+}
+.custom-node.sdd-refactor {
+  border-left: 4px solid #f97316;
+}
 
 .node-label {
   font-weight: 600;
@@ -68,7 +86,7 @@
 }
 
 .react-flow__edge.animated .react-flow__edge-path {
-  stroke: var(--color-primary, #4A90D9);
+  stroke: var(--color-primary, #4a90d9);
 }
 
 .react-flow__controls {
@@ -109,32 +127,32 @@
     height: 300px;
     touch-action: pan-x pan-y;
   }
-  
+
   .flow-diagram-container.large {
     height: 350px;
   }
-  
+
   .custom-node {
     padding: 0.5rem 0.75rem;
     min-width: 100px;
     font-size: 0.75rem;
   }
-  
+
   .node-description {
     font-size: 0.625rem;
   }
-  
+
   .react-flow__controls {
     bottom: 10px;
     left: 10px;
   }
-  
+
   .react-flow__controls-button {
     padding: 8px;
     min-width: 28px;
     min-height: 28px;
   }
-  
+
   .react-flow__minimap {
     display: none;
   }
@@ -146,9 +164,9 @@
     transform: none;
     box-shadow: none;
   }
-  
+
   .custom-node:active {
-    border-color: var(--color-primary, #4A90D9);
+    border-color: var(--color-primary, #4a90d9);
     transform: scale(0.98);
   }
 }

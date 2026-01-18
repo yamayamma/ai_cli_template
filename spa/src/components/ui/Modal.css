@@ -91,7 +91,7 @@
 }
 
 .modal-close-button:focus {
-  outline: 2px solid var(--color-primary, #4A90D9);
+  outline: 2px solid var(--color-primary, #4a90d9);
   outline-offset: 2px;
 }
 

@@ -196,19 +196,19 @@
   .step-header h1 {
     font-size: 2rem;
   }
-  
+
   .step-icon {
     font-size: 2rem;
   }
-  
+
   .step-navigation {
     flex-direction: column;
   }
-  
+
   .nav-button {
     min-width: auto;
   }
-  
+
   .nav-prev,
   .nav-next {
     align-items: center;

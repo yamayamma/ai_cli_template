@@ -1,4 +1,4 @@
-import type { Command } from '../types'
+import type { Command } from '../types';
 
 export const commands: Command[] = [
   {
@@ -52,8 +52,7 @@ export const commands: Command[] = [
     id: 'clarify',
     name: 'clarify',
     alias: 'cl',
-    description:
-      '仕様の曖昧点を特定し、明確化します。質問リストを生成し、回答を仕様に反映します。',
+    description: '仕様の曖昧点を特定し、明確化します。質問リストを生成し、回答を仕様に反映します。',
     usage: 'speckit clarify [仕様ファイル]',
     syntax: 'speckit clarify [spec-path] [options]',
     category: '仕様管理',
@@ -156,8 +155,7 @@ export const commands: Command[] = [
     id: 'tasks',
     name: 'tasks',
     alias: 'tk',
-    description:
-      'タスク分解を行います。実装計画から具体的なタスクリストを生成します。',
+    description: 'タスク分解を行います。実装計画から具体的なタスクリストを生成します。',
     usage: 'speckit tasks [計画ファイル]',
     syntax: 'speckit tasks [options]',
     category: '計画・設計',
@@ -185,8 +183,7 @@ export const commands: Command[] = [
     id: 'implement',
     name: 'implement',
     alias: 'impl',
-    description:
-      'タスク計画に基づいて実装を実行します。段階的にコードを生成し、検証を行います。',
+    description: 'タスク計画に基づいて実装を実行します。段階的にコードを生成し、検証を行います。',
     usage: 'speckit implement [タスクID]',
     syntax: 'speckit implement [options]',
     category: '実装・検証',
@@ -262,24 +259,24 @@ export const commands: Command[] = [
     relatedSteps: ['step5'],
     tags: ['検証', 'verify', 'テスト'],
   },
-]
+];
 
 export function getCommandById(id: string): Command | undefined {
-  return commands.find((cmd) => cmd.id === id)
+  return commands.find((cmd) => cmd.id === id);
 }
 
 export function getCategories(): string[] {
-  const categories = new Set(commands.map((cmd) => cmd.category))
-  return Array.from(categories)
+  const categories = new Set(commands.map((cmd) => cmd.category));
+  return Array.from(categories);
 }
 
 export function filterCommands(query: string): Command[] {
-  const lowerQuery = query.toLowerCase()
+  const lowerQuery = query.toLowerCase();
   return commands.filter(
     (cmd) =>
       cmd.name.toLowerCase().includes(lowerQuery) ||
       cmd.description.toLowerCase().includes(lowerQuery) ||
       cmd.category.toLowerCase().includes(lowerQuery) ||
       cmd.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
-  )
+  );
 }

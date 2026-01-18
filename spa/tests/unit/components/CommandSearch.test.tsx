@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { CommandSearch } from '../../../src/components/interactive/CommandSearch';
 
 describe('CommandSearch', () => {
@@ -11,10 +11,10 @@ describe('CommandSearch', () => {
   it('calls onSearch when typing', () => {
     const onSearch = vi.fn();
     render(<CommandSearch onSearch={onSearch} />);
-    
+
     const input = screen.getByPlaceholderText(/検索/i);
     fireEvent.change(input, { target: { value: 'spec' } });
-    
+
     expect(onSearch).toHaveBeenCalledWith('spec');
   });
 
@@ -26,10 +26,10 @@ describe('CommandSearch', () => {
   it('clears input when clear button clicked', () => {
     const onSearch = vi.fn();
     render(<CommandSearch onSearch={onSearch} initialValue="test" />);
-    
+
     const clearButton = screen.getByRole('button', { name: /クリア/i });
     fireEvent.click(clearButton);
-    
+
     expect(onSearch).toHaveBeenCalledWith('');
   });
 

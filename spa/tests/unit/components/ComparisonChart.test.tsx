@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import { ComparisonChart } from '../../../src/components/interactive/ComparisonChart';
 
 describe('ComparisonChart', () => {
@@ -25,7 +25,7 @@ describe('ComparisonChart', () => {
     const { container } = render(<ComparisonChart />);
     const bars = container.querySelectorAll('.comparison-bar');
     expect(bars.length).toBeGreaterThan(0);
-    
+
     // Verify bars have data attributes for interaction
     const firstBar = bars[0];
     expect(firstBar).toHaveClass('comparison-bar');
@@ -44,7 +44,7 @@ describe('ComparisonChart', () => {
   it('shows tooltips on hover', async () => {
     const { container } = render(<ComparisonChart />);
     const bars = container.querySelectorAll('.comparison-bar');
-    
+
     if (bars.length > 0) {
       fireEvent.mouseEnter(bars[0]);
       // Tooltip should appear or bar should be highlighted

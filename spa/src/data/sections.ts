@@ -1,4 +1,4 @@
-import type { Section } from '../types'
+import type { Section } from '../types';
 
 export const sections: Section[] = [
   {
@@ -48,8 +48,8 @@ export const sections: Section[] = [
       { id: 'verify', title: '/speckit.verify', path: '/commands/verify' },
     ],
   },
-]
+];
 
 export function getSectionById(id: string): Section | undefined {
-  return sections.find((section) => section.id === id)
+  return sections.find((section) => section.id === id);
 }

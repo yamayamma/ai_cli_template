@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom'
-import './Breadcrumbs.css'
+import { Link } from 'react-router-dom';
+import './Breadcrumbs.css';
 
 interface BreadcrumbItem {
-  label: string
-  path: string
+  label: string;
+  path: string;
 }
 
 interface BreadcrumbsProps {
-  items: BreadcrumbItem[]
+  items: BreadcrumbItem[];
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
@@ -15,8 +15,8 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav className="breadcrumbs" aria-label="パンくずリスト">
       <ol className="breadcrumb-list">
         {items.map((item, index) => {
-          const isLast = index === items.length - 1
-          
+          const isLast = index === items.length - 1;
+
           return (
             <li key={item.path} className="breadcrumb-item">
               {isLast ? (
@@ -34,9 +34,9 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                 </>
               )}
             </li>
-          )
+          );
         })}
       </ol>
     </nav>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { describe, expect, it } from 'vitest';
 
 // Placeholder - will be replaced with actual import
 const SDD = () => (
@@ -8,7 +8,7 @@ const SDD = () => (
     <h1>Spec Driven Development</h1>
     <p>SDDの概念を学びましょう</p>
   </div>
-)
+);
 
 describe('SDD Page', () => {
   it('should render SDD heading', () => {
@@ -16,18 +16,18 @@ describe('SDD Page', () => {
       <MemoryRouter>
         <SDD />
       </MemoryRouter>
-    )
-    
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Spec Driven Development')
-  })
+    );
+
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Spec Driven Development');
+  });
 
   it('should display SDD description', () => {
     render(
       <MemoryRouter>
         <SDD />
       </MemoryRouter>
-    )
-    
-    expect(screen.getByText(/SDDの概念/)).toBeInTheDocument()
-  })
-})
+    );
+
+    expect(screen.getByText(/SDDの概念/)).toBeInTheDocument();
+  });
+});

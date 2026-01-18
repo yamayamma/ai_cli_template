@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useEffect, useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import './Modal.css';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';

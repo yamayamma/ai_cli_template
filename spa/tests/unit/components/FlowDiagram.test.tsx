@@ -1,10 +1,14 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { FlowDiagram } from '../../../src/components/interactive/FlowDiagram';
 
 // Mock @xyflow/react
 vi.mock('@xyflow/react', () => ({
-  ReactFlow: ({ nodes, edges, children }: { nodes: unknown[]; edges: unknown[]; children?: React.ReactNode }) => (
+  ReactFlow: ({
+    nodes,
+    edges,
+    children,
+  }: { nodes: unknown[]; edges: unknown[]; children?: React.ReactNode }) => (
     <div data-testid="react-flow" data-nodes={nodes.length} data-edges={edges.length}>
       {children}
     </div>

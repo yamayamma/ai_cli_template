@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { sections } from '../../data/sections'
-import './Navigation.css'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { sections } from '../../data/sections';
+import './Navigation.css';
 
 interface NavigationProps {
-  currentPath: string
+  currentPath: string;
 }
 
 export default function Navigation({ currentPath }: NavigationProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const isActive = (path: string) => {
-    if (path === '/') return currentPath === '/'
-    return currentPath.startsWith(path)
-  }
-  
-  const navSections = sections.filter(s => s.id !== 'home')
-  
+    if (path === '/') return currentPath === '/';
+    return currentPath.startsWith(path);
+  };
+
+  const navSections = sections.filter((s) => s.id !== 'home');
+
   return (
     <header className="navigation">
       <div className="nav-container">
@@ -24,8 +24,8 @@ export default function Navigation({ currentPath }: NavigationProps) {
           <span className="logo-icon">📋</span>
           <span className="logo-text">SpecKit</span>
         </Link>
-        
-        <button 
+
+        <button
           className="nav-toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="メニューを開く"
@@ -33,12 +33,12 @@ export default function Navigation({ currentPath }: NavigationProps) {
         >
           <span className="hamburger" />
         </button>
-        
+
         <nav className={`nav-menu ${isMenuOpen ? 'is-open' : ''}`}>
           <ul className="nav-list">
-            {navSections.map(section => (
+            {navSections.map((section) => (
               <li key={section.id} className="nav-item">
-                <Link 
+                <Link
                   to={`/${section.id}`}
                   className={`nav-link ${isActive(`/${section.id}`) ? 'is-active' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
@@ -52,5 +52,5 @@ export default function Navigation({ currentPath }: NavigationProps) {
         </nav>
       </div>
     </header>
-  )
+  );
 }

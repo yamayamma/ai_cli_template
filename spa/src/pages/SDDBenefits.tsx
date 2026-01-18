@@ -1,20 +1,18 @@
-import { Link } from 'react-router-dom'
-import { getMethodologyById } from '../data/comparisons'
-import './SDDBenefits.css'
+import { Link } from 'react-router-dom';
+import { getMethodologyById } from '../data/comparisons';
+import './SDDBenefits.css';
 
 export default function SDDBenefits() {
-  const sdd = getMethodologyById('sdd')
-  
+  const sdd = getMethodologyById('sdd');
+
   return (
     <div className="page sdd-benefits-page">
       <div className="container">
         <header className="benefits-header">
           <h1>SDDのメリット・デメリット</h1>
-          <p className="benefits-intro">
-            SDDを採用する際に考慮すべきポイントを解説します。
-          </p>
+          <p className="benefits-intro">SDDを採用する際に考慮すべきポイントを解説します。</p>
         </header>
-        
+
         <section className="benefits-section">
           <h2>✅ メリット</h2>
           <div className="benefit-cards">
@@ -26,7 +24,7 @@ export default function SDDBenefits() {
             ))}
           </div>
         </section>
-        
+
         <section className="drawbacks-section">
           <h2>⚠️ デメリット・注意点</h2>
           <div className="benefit-cards">
@@ -38,7 +36,7 @@ export default function SDDBenefits() {
             ))}
           </div>
         </section>
-        
+
         <section className="best-for-section">
           <h2>SDDが適しているプロジェクト</h2>
           <div className="best-for-list">
@@ -50,7 +48,7 @@ export default function SDDBenefits() {
             ))}
           </div>
         </section>
-        
+
         <section className="when-to-use">
           <h2>SDDを選ぶべきとき</h2>
           <div className="scenarios">
@@ -74,7 +72,7 @@ export default function SDDBenefits() {
             </div>
           </div>
         </section>
-        
+
         <nav className="page-nav">
           <Link to="/sdd/comparison" className="nav-link">
             ← 他手法との比較
@@ -85,5 +83,5 @@ export default function SDDBenefits() {
         </nav>
       </div>
     </div>
-  )
+  );
 }
