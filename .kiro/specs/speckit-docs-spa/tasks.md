@@ -8,7 +8,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
 ## Tasks
 
 - [ ] 1. プロジェクト基盤セットアップ
-- [ ] 1.1 SPA用Vite設定とReact依存関係の追加
+- [x] 1.1 SPA用Vite設定とReact依存関係の追加
   - spa/ディレクトリにVite + React + TypeScriptの設定を追加
   - package.jsonにspa用のスクリプトを追加（dev:spa, build:spa）
   - 既存のtsconfig.jsonを拡張してspa/src対応
