@@ -41,7 +41,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - 各パターンのテンプレートと実例を記述
   - _Requirements: 6.1, 6.2_
 
-- [ ] 2.5 (P) Steering/Specs概念説明データの作成
+- [x] 2.5 (P) Steering/Specs概念説明データの作成
   - Steeringの役割と用途を定義
   - Specsの役割と用途を定義
   - 比較表用のデータ構造を作成

@@ -51,7 +51,7 @@
   },
   "overrides": [
     {
-      "include": ["spa/src/data/types.ts"],
+      "include": ["spa/src/data/types.ts", "spa/src/data/concepts.ts"],
       "linter": {
         "rules": {
           "complexity": {
