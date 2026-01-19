@@ -54,7 +54,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - コピー成功/失敗のフィードバック表示
   - _Requirements: 2.3_
 
-- [ ] 3.2 (P) useActiveSectionフックの実装
+- [x] 3.2 (P) useActiveSectionフックの実装
   - Intersection Observerによるセクション可視性監視
   - アクティブセクションの状態管理
   - scrollToSection関数によるスムーズスクロール
