@@ -31,7 +31,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - 各フェーズの目的、成果物、アイコンを記述
   - _Requirements: 1.1, 1.2_
 
-- [ ] 2.3 (P) Spec Kitコマンドリファレンスデータの作成
+- [x] 2.3 (P) Spec Kitコマンドリファレンスデータの作成
   - 主要コマンド（init, requirements, design, tasks, impl）の情報を定義
   - 各コマンドのパラメータ、構文、使用例を記述
   - _Requirements: 2.1, 2.2, 2.3_
