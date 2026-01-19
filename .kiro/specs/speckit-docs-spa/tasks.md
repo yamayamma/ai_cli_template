@@ -14,7 +14,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - 既存のtsconfig.jsonを拡張してspa/src対応
   - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-- [ ] 1.2 (P) CSS Modulesとグローバルスタイルの設定
+- [x] 1.2 (P) CSS Modulesとグローバルスタイルの設定
   - CSS変数によるデザイントークン定義（色、フォント、スペーシング）
   - レスポンシブブレークポイントの設定
   - リセットCSSとベーススタイルの適用
