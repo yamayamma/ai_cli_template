@@ -48,7 +48,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - _Requirements: 4.1, 4.2, 4.3_
 
 - [ ] 3. 共通コンポーネントの実装
-- [ ] 3.1 CodeBlockコンポーネントの実装
+- [x] 3.1 CodeBlockコンポーネントの実装
   - コード表示領域とコピーボタンのレイアウト
   - Clipboard APIを使用したコピー機能の実装
   - コピー成功/失敗のフィードバック表示
