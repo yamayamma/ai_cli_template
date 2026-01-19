@@ -36,7 +36,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - 各コマンドのパラメータ、構文、使用例を記述
   - _Requirements: 2.1, 2.2, 2.3_
 
-- [ ] 2.4 (P) EARSパターンデータの作成
+- [x] 2.4 (P) EARSパターンデータの作成
   - 5つのEARSパターン（Event-Driven, State-Driven, Unwanted Behavior, Optional Feature, Ubiquitous）を定義
   - 各パターンのテンプレートと実例を記述
   - _Requirements: 6.1, 6.2_
