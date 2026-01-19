@@ -48,5 +48,17 @@
       "trailingCommas": "es5",
       "arrowParentheses": "always"
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": ["spa/src/data/types.ts"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "useLiteralKeys": "off"
+          }
+        }
+      }
+    }
+  ]
 }

@@ -21,7 +21,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - _Requirements: 5.3_
 
 - [ ] 2. データ層の実装
-- [ ] 2.1 (P) コンテンツデータの型定義と構造作成
+- [x] 2.1 (P) コンテンツデータの型定義と構造作成
   - Phase, Command, Parameter, CodeExample, EarsPattern, Section型の定義
   - 型の整合性を保証する構造体の作成
   - _Requirements: 1.1, 1.2, 2.1, 6.1_
