@@ -26,7 +26,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - 型の整合性を保証する構造体の作成
   - _Requirements: 1.1, 1.2, 2.1, 6.1_
 
-- [ ] 2.2 (P) SDDフェーズコンテンツデータの作成
+- [x] 2.2 (P) SDDフェーズコンテンツデータの作成
   - Requirements, Design, Tasksの3フェーズ情報を定義
   - 各フェーズの目的、成果物、アイコンを記述
   - _Requirements: 1.1, 1.2_
