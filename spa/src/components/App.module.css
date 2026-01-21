@@ -1,0 +1,24 @@
+/**
+ * App Styles
+ * アプリケーションのルートレイアウトとメインコンテンツのスタイル
+ */
+
+/* アプリケーションコンテナ */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* メインコンテンツエリア */
+.main {
+  flex: 1;
+  padding-top: var(--spacing-20);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .main {
+    padding-top: var(--spacing-16);
+  }
+}

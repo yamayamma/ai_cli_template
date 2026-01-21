@@ -16,6 +16,7 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check --write .",
+    "typecheck": "tsc --noEmit --project spa/tsconfig.check.json",
     "docs:generate": "typedoc"
   },
   "devDependencies": {
