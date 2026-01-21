@@ -88,7 +88,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - CodeBlockを使用したコード例表示
   - _Requirements: 2.1, 2.2, 2.3_
 
-- [ ] 5.3 (P) ApprovalSectionの実装
+- [x] 5.3 (P) ApprovalSectionの実装
   - 承認ワークフローの図解表示
   - 各フェーズでのレビュー必要性の説明
   - -yオプションの使用方法と注意点の説明
