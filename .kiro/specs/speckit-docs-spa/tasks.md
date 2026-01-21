@@ -113,7 +113,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - セクションIDの設定とナビゲーション連携
   - _Requirements: 1.1, 1.3, 5.1, 5.2_
 
-- [ ] 6.2 エントリーポイントとHTMLテンプレートの設定
+- [x] 6.2 エントリーポイントとHTMLテンプレートの設定
   - main.tsxでのReactアプリケーションマウント
   - index.htmlのメタ情報とビューポート設定
   - ファビコンとOGP設定
