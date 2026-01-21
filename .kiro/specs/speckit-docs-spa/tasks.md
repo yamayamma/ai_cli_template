@@ -94,7 +94,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - -yオプションの使用方法と注意点の説明
   - _Requirements: 3.1, 3.2, 3.3_
 
-- [ ] 5.4 (P) ConceptSectionの実装
+- [x] 5.4 (P) ConceptSectionの実装
   - SteeringとSpecsの比較表表示
   - Steeringの役割説明
   - Specsの役割説明
