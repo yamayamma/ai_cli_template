@@ -81,7 +81,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - フェーズ間の矢印/接続表示
   - _Requirements: 1.1, 1.2_
 
-- [ ] 5.2 (P) CommandSectionとCommandCardの実装
+- [x] 5.2 (P) CommandSectionとCommandCardの実装
   - コマンド一覧を表示するセクション
   - 各コマンドの詳細を表示するカード
   - ホバー時の詳細説明表示
