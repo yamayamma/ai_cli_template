@@ -13,7 +13,14 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check --write .",
-    "docs:generate": "typedoc"
+    "typecheck": "tsc --noEmit --project spa/tsconfig.check.json",
+    "docs:generate": "typedoc",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -21,6 +28,9 @@
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^22.10.5",
     "@vitest/coverage-v8": "^2.1.8",
+    "husky": "^9.1.7",
+    "jsdom": "^27.4.0",
+    "lint-staged": "^15.2.11",
     "semantic-release": "^24.2.0",
     "typedoc": "^0.28.15",
     "typescript": "^5.7.3",
