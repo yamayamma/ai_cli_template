@@ -100,7 +100,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - Specsの役割説明
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 5.5 (P) EarsSectionとPatternCardの実装
+- [x] 5.5 (P) EarsSectionとPatternCardの実装
   - EARS形式の概要説明
   - 5つのパターンを表示するカード
   - パターン選択時のテンプレートと実例表示

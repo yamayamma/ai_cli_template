@@ -1,0 +1,174 @@
+/**
+ * EarsSection Component Styles
+ * Requirements: 6.1, 6.2, 6.3
+ */
+
+.section {
+  padding: var(--spacing-16) 0;
+  background-color: var(--color-background-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-12);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Pattern Cards Grid */
+.patterns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+/* Pattern Card */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  transition: box-shadow var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.toggleButton {
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.toggleButton:hover {
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary-dark);
+}
+
+/* Template */
+.template {
+  background-color: var(--color-background-tertiary);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-4);
+  overflow-x: auto;
+}
+
+.templateCode {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-mono);
+  color: var(--color-primary-dark);
+  background: transparent;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Examples (expanded state) */
+.examples {
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.examplesTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.exampleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.exampleItem {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background-secondary);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-primary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-6);
+  }
+
+  .patterns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-8);
+  }
+}
+
+/* Special layout for 5 cards - last row centered */
+@media (min-width: 768px) {
+  .patterns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - var(--spacing-3));
+    justify-self: center;
+  }
+}
