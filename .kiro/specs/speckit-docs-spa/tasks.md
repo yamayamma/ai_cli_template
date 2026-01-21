@@ -75,7 +75,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - _Requirements: 1.3, 5.1, 5.2, 5.3_
 
 - [ ] 5. コンテンツセクションの実装
-- [ ] 5.1 (P) WorkflowSectionとPhaseCardの実装
+- [x] 5.1 (P) WorkflowSectionとPhaseCardの実装
   - SDDの3フェーズを視覚的に表示するセクション
   - 各フェーズを表すカードコンポーネント
   - フェーズ間の矢印/接続表示
