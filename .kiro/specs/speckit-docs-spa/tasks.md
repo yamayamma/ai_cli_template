@@ -139,7 +139,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - コピー失敗時のエラー表示検証
   - _Requirements: 2.3_
 
-- [ ] 8.3 ビルドとリントの検証
+- [x] 8.3 ビルドとリントの検証
   - pnpm build:spaの実行と成功確認
   - Biomeによるリント・フォーマットチェック
   - TypeScript型チェックの通過確認

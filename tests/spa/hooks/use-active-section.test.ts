@@ -48,6 +48,14 @@ class MockIntersectionObserver {
   }
 }
 
+/**
+ * Helper to get element by id with fallback to a div
+ * Avoids non-null assertion linting error
+ */
+function getElementOrDefault(id: string): Element {
+  return document.getElementById(id) ?? document.createElement('div');
+}
+
 describe('useActiveSection Hook', () => {
   let mockScrollIntoView: ReturnType<typeof vi.fn>;
 
@@ -142,7 +150,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('commands')!,
+            target: getElementOrDefault('commands'),
             isIntersecting: true,
             intersectionRatio: 0.5,
           },
@@ -167,17 +175,17 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('workflow')!,
+            target: getElementOrDefault('workflow'),
             isIntersecting: true,
             intersectionRatio: 0.2,
           },
           {
-            target: document.getElementById('commands')!,
+            target: getElementOrDefault('commands'),
             isIntersecting: true,
             intersectionRatio: 0.8,
           },
           {
-            target: document.getElementById('approval')!,
+            target: getElementOrDefault('approval'),
             isIntersecting: true,
             intersectionRatio: 0.3,
           },
@@ -304,7 +312,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('commands')!,
+            target: getElementOrDefault('commands'),
             isIntersecting: true,
             intersectionRatio: 0.8,
           },
@@ -317,12 +325,12 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('commands')!,
+            target: getElementOrDefault('commands'),
             isIntersecting: false,
             intersectionRatio: 0,
           },
           {
-            target: document.getElementById('approval')!,
+            target: getElementOrDefault('approval'),
             isIntersecting: true,
             intersectionRatio: 0.5,
           },
@@ -347,7 +355,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('workflow')!,
+            target: getElementOrDefault('workflow'),
             isIntersecting: true,
             intersectionRatio: 0.5,
           },
@@ -360,7 +368,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('workflow')!,
+            target: getElementOrDefault('workflow'),
             isIntersecting: false,
             intersectionRatio: 0,
           },
@@ -386,7 +394,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('workflow')!,
+            target: getElementOrDefault('workflow'),
             isIntersecting: true,
             intersectionRatio: 0.3,
           },
@@ -396,7 +404,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('commands')!,
+            target: getElementOrDefault('commands'),
             isIntersecting: true,
             intersectionRatio: 0.6,
           },
@@ -406,7 +414,7 @@ describe('useActiveSection Hook', () => {
       act(() => {
         observer.triggerIntersection([
           {
-            target: document.getElementById('approval')!,
+            target: getElementOrDefault('approval'),
             isIntersecting: true,
             intersectionRatio: 0.9,
           },
