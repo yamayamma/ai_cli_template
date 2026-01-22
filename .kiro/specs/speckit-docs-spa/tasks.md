@@ -133,7 +133,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - scrollToSection関数の動作検証
   - _Requirements: 5.2_
 
-- [ ] 8.2 (P) CodeBlockコンポーネントのユニットテスト
+- [x] 8.2 (P) CodeBlockコンポーネントのユニットテスト
   - Clipboard APIのモック設定
   - コピー成功時の動作検証
   - コピー失敗時のエラー表示検証

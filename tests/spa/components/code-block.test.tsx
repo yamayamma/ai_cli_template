@@ -139,6 +139,150 @@ describe('CodeBlock Component', () => {
       expect(copyButton).toHaveAttribute('aria-label');
     });
   });
+
+  describe('Edge Cases', () => {
+    it('should handle multiple rapid clicks correctly', async () => {
+      vi.useFakeTimers();
+      mockWriteText.mockResolvedValue(undefined);
+
+      render(<CodeBlock code="test" />);
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+
+      // Click multiple times rapidly
+      await act(async () => {
+        fireEvent.click(copyButton);
+        await Promise.resolve();
+      });
+
+      await act(async () => {
+        fireEvent.click(copyButton);
+        await Promise.resolve();
+      });
+
+      // Should still show success
+      expect(screen.getByText(/コピー完了|copied/i)).toBeInTheDocument();
+
+      // Clipboard should have been called twice
+      expect(mockWriteText).toHaveBeenCalledTimes(2);
+
+      vi.useRealTimers();
+    });
+
+    it('should handle long code content', async () => {
+      const longCode = 'a'.repeat(10000);
+      mockWriteText.mockResolvedValueOnce(undefined);
+
+      render(<CodeBlock code={longCode} />);
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+      fireEvent.click(copyButton);
+
+      await waitFor(() => {
+        expect(mockWriteText).toHaveBeenCalledWith(longCode);
+      });
+    });
+
+    it('should handle special characters in code', async () => {
+      const specialCode = '<script>alert("XSS")</script> & < > " \'';
+      mockWriteText.mockResolvedValueOnce(undefined);
+
+      render(<CodeBlock code={specialCode} />);
+
+      const codeElement = screen.getByTestId('code-content');
+      expect(codeElement.textContent).toBe(specialCode);
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+      fireEvent.click(copyButton);
+
+      await waitFor(() => {
+        expect(mockWriteText).toHaveBeenCalledWith(specialCode);
+      });
+    });
+
+    it('should handle empty code string', () => {
+      render(<CodeBlock code="" />);
+
+      const codeElement = screen.getByTestId('code-content');
+      expect(codeElement).toHaveTextContent('');
+    });
+
+    it('should handle multiline code', async () => {
+      const multilineCode = `const x = 1;
+const y = 2;
+console.log(x + y);`;
+      mockWriteText.mockResolvedValueOnce(undefined);
+
+      render(<CodeBlock code={multilineCode} />);
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+      fireEvent.click(copyButton);
+
+      await waitFor(() => {
+        expect(mockWriteText).toHaveBeenCalledWith(multilineCode);
+      });
+    });
+  });
+
+  describe('Copy State Transitions', () => {
+    it('should transition through idle -> success -> idle states', async () => {
+      vi.useFakeTimers();
+      mockWriteText.mockResolvedValueOnce(undefined);
+
+      render(<CodeBlock code="test" />);
+
+      // Initial state: idle
+      expect(screen.getByText('コピー')).toBeInTheDocument();
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+
+      await act(async () => {
+        fireEvent.click(copyButton);
+        await Promise.resolve();
+      });
+
+      // After click: success
+      expect(screen.getByText('コピー完了')).toBeInTheDocument();
+
+      // After timeout: back to idle
+      await act(async () => {
+        vi.advanceTimersByTime(2100);
+      });
+
+      expect(screen.getByText('コピー')).toBeInTheDocument();
+
+      vi.useRealTimers();
+    });
+
+    it('should transition through idle -> error -> idle states', async () => {
+      vi.useFakeTimers();
+      mockWriteText.mockRejectedValueOnce(new Error('Copy failed'));
+
+      render(<CodeBlock code="test" />);
+
+      // Initial state: idle
+      expect(screen.getByText('コピー')).toBeInTheDocument();
+
+      const copyButton = screen.getByRole('button', { name: /コピー|copy/i });
+
+      await act(async () => {
+        fireEvent.click(copyButton);
+        await Promise.resolve();
+      });
+
+      // After failed click: error
+      expect(screen.getByText('コピー失敗')).toBeInTheDocument();
+
+      // After timeout: back to idle
+      await act(async () => {
+        vi.advanceTimersByTime(2100);
+      });
+
+      expect(screen.getByText('コピー')).toBeInTheDocument();
+
+      vi.useRealTimers();
+    });
+  });
 });
 
 describe('ClipboardService', () => {
