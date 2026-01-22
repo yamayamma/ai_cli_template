@@ -287,4 +287,217 @@ describe('useActiveSection Hook', () => {
       expect(MockIntersectionObserver.instances.length).toBeGreaterThan(0);
     });
   });
+
+  describe('Section Visibility Changes', () => {
+    it('should remove section from tracking when it becomes non-intersecting', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      const { result } = renderHook(() =>
+        useActiveSection({
+          sectionIds: ['workflow', 'commands', 'approval'],
+        })
+      );
+
+      const observer = MockIntersectionObserver.instances[0];
+
+      // First, make commands visible
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('commands')!,
+            isIntersecting: true,
+            intersectionRatio: 0.8,
+          },
+        ]);
+      });
+
+      expect(result.current.activeSection).toBe('commands');
+
+      // Then make commands non-visible and approval visible
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('commands')!,
+            isIntersecting: false,
+            intersectionRatio: 0,
+          },
+          {
+            target: document.getElementById('approval')!,
+            isIntersecting: true,
+            intersectionRatio: 0.5,
+          },
+        ]);
+      });
+
+      expect(result.current.activeSection).toBe('approval');
+    });
+
+    it('should keep current active section when no sections are visible', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      const { result } = renderHook(() =>
+        useActiveSection({
+          sectionIds: ['workflow', 'commands'],
+        })
+      );
+
+      const observer = MockIntersectionObserver.instances[0];
+
+      // Make workflow visible first
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('workflow')!,
+            isIntersecting: true,
+            intersectionRatio: 0.5,
+          },
+        ]);
+      });
+
+      expect(result.current.activeSection).toBe('workflow');
+
+      // Make workflow non-visible without any other visible section
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('workflow')!,
+            isIntersecting: false,
+            intersectionRatio: 0,
+          },
+        ]);
+      });
+
+      // Should keep the last active section
+      expect(result.current.activeSection).toBe('workflow');
+    });
+
+    it('should handle rapid section changes correctly', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      const { result } = renderHook(() =>
+        useActiveSection({
+          sectionIds: ['workflow', 'commands', 'approval'],
+        })
+      );
+
+      const observer = MockIntersectionObserver.instances[0];
+
+      // Rapid succession of visibility changes
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('workflow')!,
+            isIntersecting: true,
+            intersectionRatio: 0.3,
+          },
+        ]);
+      });
+
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('commands')!,
+            isIntersecting: true,
+            intersectionRatio: 0.6,
+          },
+        ]);
+      });
+
+      act(() => {
+        observer.triggerIntersection([
+          {
+            target: document.getElementById('approval')!,
+            isIntersecting: true,
+            intersectionRatio: 0.9,
+          },
+        ]);
+      });
+
+      // Should end up with approval as active (highest ratio)
+      expect(result.current.activeSection).toBe('approval');
+    });
+  });
+
+  describe('SectionIds Changes', () => {
+    it('should reinitialize observer when sectionIds change', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      const { rerender } = renderHook(({ sectionIds }) => useActiveSection({ sectionIds }), {
+        initialProps: { sectionIds: ['workflow', 'commands'] as readonly string[] },
+      });
+
+      const initialObserverCount = MockIntersectionObserver.instances.length;
+
+      // Change sectionIds
+      rerender({ sectionIds: ['workflow', 'commands', 'approval'] as readonly string[] });
+
+      // A new observer should be created
+      expect(MockIntersectionObserver.instances.length).toBeGreaterThan(initialObserverCount);
+    });
+
+    it('should not create observer when sectionIds is empty', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      MockIntersectionObserver.instances = [];
+
+      renderHook(() =>
+        useActiveSection({
+          sectionIds: [],
+        })
+      );
+
+      // No observer should be created for empty sectionIds
+      // (The hook has an early return for empty sectionIds)
+      expect(MockIntersectionObserver.instances.length).toBe(0);
+    });
+  });
+
+  describe('scrollToSection Edge Cases', () => {
+    it('should scroll to section that exists in DOM but not in sectionIds', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      // Add an extra section to DOM
+      const extraSection = document.createElement('section');
+      extraSection.id = 'extra';
+      document.body.appendChild(extraSection);
+
+      const { result } = renderHook(() =>
+        useActiveSection({
+          sectionIds: ['workflow', 'commands'],
+        })
+      );
+
+      act(() => {
+        result.current.scrollToSection('extra');
+      });
+
+      // Should still scroll to the element even if not in sectionIds
+      expect(mockScrollIntoView).toHaveBeenCalledWith({
+        behavior: 'smooth',
+        block: 'start',
+      });
+
+      // Clean up
+      extraSection.remove();
+    });
+
+    it('should maintain scrollToSection reference stability', async () => {
+      const { useActiveSection } = await import('../../../spa/src/hooks/useActiveSection');
+
+      const { result, rerender } = renderHook(() =>
+        useActiveSection({
+          sectionIds: ['workflow', 'commands'],
+        })
+      );
+
+      const firstScrollToSection = result.current.scrollToSection;
+
+      rerender();
+
+      const secondScrollToSection = result.current.scrollToSection;
+
+      // scrollToSection should be the same reference (memoized with useCallback)
+      expect(firstScrollToSection).toBe(secondScrollToSection);
+    });
+  });
 });

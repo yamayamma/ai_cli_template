@@ -127,7 +127,7 @@ Spec Kit ドキュメント SPA の実装タスク。React + TypeScript + Vite �
   - _Requirements: 5.3_
 
 - [ ] 8. テストとビルド検証
-- [ ] 8.1 useActiveSectionフックのユニットテスト
+- [x] 8.1 useActiveSectionフックのユニットテスト
   - Intersection Observerのモック設定
   - セクション切り替えの動作検証
   - scrollToSection関数の動作検証
