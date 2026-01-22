@@ -75,5 +75,22 @@
   .navLink {
     display: block;
     padding: var(--spacing-3) var(--spacing-4);
+    /* タッチターゲット最小サイズ確保 */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* タッチデバイスでホバー効果を抑制 */
+@media (hover: none) {
+  .navLink:hover {
+    color: var(--color-text-secondary);
+    background-color: transparent;
+  }
+
+  .navLink.active:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-subtle);
   }
 }

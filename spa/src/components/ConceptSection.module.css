@@ -169,3 +169,40 @@
     padding: 0 var(--spacing-8);
   }
 }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-12) 0;
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .card {
+    padding: var(--spacing-4);
+  }
+
+  .comparison {
+    padding: var(--spacing-4);
+  }
+
+  /* テーブルの横スクロールを有効化 */
+  .tableWrapper {
+    margin: 0 calc(-1 * var(--spacing-4));
+    padding: 0 var(--spacing-4);
+  }
+
+  .th,
+  .td,
+  .tdAspect {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-xs);
+  }
+}

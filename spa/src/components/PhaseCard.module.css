@@ -77,3 +77,20 @@
   padding: var(--spacing-1) var(--spacing-2);
   border-radius: var(--radius-sm);
 }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-4);
+    min-width: unset;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+  }
+
+  .description {
+    font-size: var(--font-size-xs);
+  }
+}

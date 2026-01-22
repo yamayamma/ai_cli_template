@@ -177,3 +177,41 @@
   color: var(--color-text-secondary);
   margin: 0;
 }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-4);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .name code {
+    font-size: var(--font-size-sm);
+  }
+
+  .toggleButton {
+    align-self: flex-start;
+    /* タッチターゲット最小サイズ確保 */
+    min-height: 44px;
+  }
+
+  .syntax {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .syntaxCode {
+    font-size: var(--font-size-xs);
+    word-break: break-all;
+  }
+
+  .details {
+    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+  }
+}

@@ -72,3 +72,32 @@
   color: var(--color-error);
   border-color: var(--color-error);
 }
+
+/* ===========================
+ * Responsive - Mobile
+ * タッチデバイス対応
+ * =========================== */
+@media (max-width: 480px) {
+  .pre {
+    padding: var(--spacing-3);
+  }
+
+  .code {
+    font-size: var(--font-size-xs);
+  }
+
+  .copyButton {
+    /* タッチターゲット最小サイズ確保 */
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--spacing-2);
+  }
+}
+
+/* タッチデバイスでホバー効果を抑制 */
+@media (hover: none) {
+  .copyButton:hover {
+    background-color: var(--color-background);
+    color: var(--color-text-secondary);
+  }
+}

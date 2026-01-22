@@ -253,3 +253,44 @@
     padding: 0 var(--spacing-8);
   }
 }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-12) 0;
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .workflow {
+    padding: var(--spacing-4);
+  }
+
+  .phaseBox {
+    padding: var(--spacing-3);
+    min-width: 80px;
+  }
+
+  .phaseIcon {
+    font-size: var(--font-size-xl);
+  }
+
+  .phaseLabel {
+    font-size: var(--font-size-xs);
+  }
+
+  .checkpoints {
+    margin-bottom: var(--spacing-8);
+  }
+
+  .fastTrack {
+    padding: var(--spacing-4);
+  }
+}
