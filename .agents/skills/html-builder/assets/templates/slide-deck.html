@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Deck title]</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel-2:#21262d; --text:#e6edf3; --muted:#8b949e; --border:#30363d; --accent:#2f81f7; --success:#3fb950; --danger:#f85149; --warning:#d29922; --serif:ui-serif,Georgia,serif; --sans:system-ui,-apple-system,Segoe UI,sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); }
+  .deck { width:min(100%,1040px); margin:0 auto; padding:28px; display:grid; gap:22px; }
+  .slide { min-height:580px; background:var(--panel); border:1.5px solid var(--border); border-radius:8px; padding:44px; display:flex; flex-direction:column; justify-content:space-between; page-break-after:always; }
+  .kicker { font:700 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+  h1,h2 { font-family:var(--serif); font-weight:500; line-height:1.05; margin:0; }
+  h1 { font-size:58px; max-width:13ch; }
+  h2 { font-size:44px; max-width:16ch; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px; }
+  .card { border:1px solid var(--border); background:var(--panel-2); border-radius:8px; padding:16px; min-height:140px; }
+  .big { font-size:44px; font-weight:750; }
+  @media (max-width:760px) { .slide { min-height:auto; padding:28px; } .grid { grid-template-columns:1fr; } h1 { font-size:42px; } h2 { font-size:34px; } }
+  @media print { body { background:white; } .deck { padding:0; } .slide { border:0; border-radius:0; min-height:100vh; } }
+</style>
+</head>
+<body>
+<main class="deck">
+  <section class="slide">
+    <div class="kicker">[Team / Date]</div>
+    <h1>[Deck title]</h1>
+    <p>[One-line framing statement.]</p>
+  </section>
+  <section class="slide">
+    <div>
+      <div class="kicker">01</div>
+      <h2>[Main progress message]</h2>
+      <div class="grid">
+        <article class="card"><strong>[Item]</strong><p>[Evidence or detail.]</p></article>
+        <article class="card"><strong>[Item]</strong><p>[Evidence or detail.]</p></article>
+        <article class="card"><strong>[Item]</strong><p>[Evidence or detail.]</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <div class="kicker">Decision</div>
+      <h2>[One decision or ask]</h2>
+    </div>
+    <p>[Why this decision matters now.]</p>
+  </section>
+</main>
+</body>
+</html>

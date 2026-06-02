@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Report title]</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel-2:#21262d; --text:#e6edf3; --muted:#8b949e; --border:#30363d; --accent:#2f81f7; --success:#3fb950; --danger:#f85149; --warning:#d29922; --serif:ui-serif,Georgia,serif; --sans:system-ui,-apple-system,Segoe UI,sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.5; }
+  .page { max-width:1040px; margin:0 auto; padding:50px 28px 90px; }
+  header { border-bottom:1.5px solid var(--border); padding-bottom:26px; }
+  h1 { font:500 clamp(34px,5vw,56px)/1.05 var(--serif); margin:0; }
+  .meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .chip { border:1px solid var(--border); border-radius:999px; padding:5px 9px; background:var(--panel); color:var(--muted); font-size:12px; }
+  section { margin-top:34px; }
+  h2 { font-size:22px; margin:0 0 14px; }
+  .summary { background:var(--panel); border:1.5px solid var(--border); border-left:4px solid var(--accent); border-radius:0 8px 8px 0; padding:18px; }
+  table { width:100%; border-collapse:collapse; background:var(--panel); border:1.5px solid var(--border); border-radius:8px; overflow:hidden; }
+  th,td { text-align:left; padding:11px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { font:700 12px var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+  tr:last-child td { border-bottom:0; }
+  @media (max-width:700px) { .table-wrap { overflow:auto; } table { min-width:620px; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>[Operational report title]</h1>
+    <div class="meta">
+      <span class="chip">Date: [date]</span>
+      <span class="chip">Owner: [team]</span>
+      <span class="chip">Status: [status]</span>
+    </div>
+  </header>
+  <section class="summary">
+    <strong>Summary.</strong> [State the key facts, decision, or status in two sentences.]
+  </section>
+  <section>
+    <h2>[Highlights / Timeline / Impact]</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Owner</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>[Work item]</td><td>[Owner]</td><td>[Status]</td><td>[Specific note]</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Diagram title]</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel-2:#21262d; --text:#e6edf3; --muted:#8b949e; --border:#30363d; --accent:#2f81f7; --success:#3fb950; --danger:#f85149; --warning:#d29922; --serif:ui-serif,Georgia,serif; --sans:system-ui,-apple-system,Segoe UI,sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); }
+  .wrap { max-width:1180px; margin:0 auto; padding:48px 28px 88px; }
+  h1 { font:500 clamp(34px,5vw,58px)/1.05 var(--serif); margin:10px 0 0; }
+  .eyebrow { font:700 12px/1 var(--mono); color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+  .layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:22px; margin-top:34px; align-items:start; }
+  .canvas, aside { background:var(--panel); border:1.5px solid var(--border); border-radius:8px; }
+  .canvas { padding:18px; overflow:auto; }
+  svg { width:100%; min-width:620px; height:auto; display:block; }
+  aside { padding:18px; position:sticky; top:18px; }
+  .node rect { fill:var(--panel-2); stroke:var(--border); stroke-width:1.5; rx:8; }
+  .node text { font:600 14px var(--sans); fill:var(--text); }
+  .edge { stroke:var(--muted); stroke-width:2; fill:none; marker-end:url(#arrow); }
+  .meta { color:var(--muted); font:12px var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+  @media (max-width:900px) { .layout { grid-template-columns:1fr; } aside { position:static; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">[Diagram / Explainer]</div>
+    <h1>[What this system or process does]</h1>
+  </header>
+  <main class="layout">
+    <section class="canvas" aria-label="[Diagram label]">
+      <svg viewBox="0 0 720 360" role="img">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8b949e"/></marker></defs>
+        <path class="edge" d="M170 90H330"/>
+        <path class="edge" d="M470 90H610"/>
+        <g class="node"><rect x="40" y="50" width="130" height="80"/><text x="105" y="95" text-anchor="middle">[Step 1]</text></g>
+        <g class="node"><rect x="330" y="50" width="140" height="80"/><text x="400" y="95" text-anchor="middle">[Step 2]</text></g>
+        <g class="node"><rect x="610" y="50" width="90" height="80"/><text x="655" y="95" text-anchor="middle">[Done]</text></g>
+      </svg>
+    </section>
+    <aside>
+      <div class="meta">Reading order</div>
+      <h2>[Selected step]</h2>
+      <p>[Explain the active path, data, risk, or decision.]</p>
+    </aside>
+  </main>
+</div>
+</body>
+</html>

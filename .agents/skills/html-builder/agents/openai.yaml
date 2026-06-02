@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML Builder"
+  short_description: "Build polished single-file HTML artifacts"
+  default_prompt: "Use $html-builder to create a polished single-file HTML artifact in the right format."
